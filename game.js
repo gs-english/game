@@ -5,12 +5,14 @@
         const phrasalVerbsSection = document.getElementById('phrasal-verbs-section');
         const idiomsSection = document.getElementById('idioms-section');
         const completePhrasalVerbsSection = document.getElementById('complete-phrasal-verbs-section');
+        const idiomsChallengeSection = document.getElementById('idioms-challenge-section');
         
         const startNewWordsBtn = document.getElementById('start-new-words-btn');
         const startCompletePhraseBtn = document.getElementById('start-complete-phrase-btn');
         const startPhrasalVerbsBtn = document.getElementById('start-phrasal-verbs-btn');
         const startIdiomsBtn = document.getElementById('start-idioms-btn');
         const startPhrasalVerbsCompletionBtn = document.getElementById('start-phrasal-verbs-completion-btn');
+        const startIdiomsChallengeBtn = document.getElementById('start-idioms-challenge-btn');
         const backToHomeBtns = document.querySelectorAll('.back-to-home-btn');
 
         // New Words Elements
@@ -91,6 +93,22 @@
         const backPhrasalVerbsCompletionBtn = document.getElementById('back-phrasal-verbs-completion-btn');
         const undoPhrasalVerbsCompletionBtn = document.getElementById('undo-phrasal-verbs-completion-btn');
 
+        // Idioms Challenge Elements
+        const idiomsChallengeCard = document.getElementById('idioms-challenge-card');
+        const idiomsChallengeCardContent = document.getElementById('idioms-challenge-card-content');
+        const idiomsChallengeCompletionContainer = document.getElementById('idiom-challenge-completion-container');
+        const idiomsChallengeFinalScoreTextEl = document.getElementById('idiom-challenge-final-score-text');
+        const idiomsChallengeCounterEl = document.getElementById('idioms-challenge-counter');
+        const idiomsChallengeScoreCounterEl = document.getElementById('idioms-challenge-score-counter');
+        const idiomChallengeTextEl = document.getElementById('idiom-challenge-text');
+        const idiomChallengeOptionsContainerEl = document.getElementById('idiom-challenge-options-container');
+        const idiomChallengeFeedbackMessageEl = document.getElementById('idiom-challenge-feedback-message');
+        const idiomChallengeExplanationContainerEl = document.getElementById('idiom-challenge-explanation-container');
+        const idiomChallengeExplanationTextEl = document.getElementById('idiom-challenge-explanation-text');
+        const nextIdiomChallengeBtn = document.getElementById('next-idiom-challenge-btn');
+        const backIdiomChallengeBtn = document.getElementById('back-idiom-challenge-btn');
+        const undoIdiomChallengeBtn = document.getElementById('undo-idiom-challenge-btn');
+
 
         // State
         let sessionWords = [];
@@ -114,9 +132,15 @@
         let phrasalVerbsCompletionScore = { correct: 0, incorrect: 0 };
         let sessionPhrasalVerbsCompletionAnswers = {};
 
+        let sessionIdiomsChallenge = [];
+        let sessionIdiomsChallengeIndex = 0;
+        let idiomsChallengeAnswered = false;
+        let idiomsChallengeScore = { correct: 0, incorrect: 0 };
+        let sessionIdiomsChallengeAnswers = {};
+
         // --- NAVIGATION LOGIC ---
         function showScreen(screenId) {
-            const screens = [homeScreen, newWordsSection, completePhraseSection, phrasalVerbsSection, idiomsSection, completePhrasalVerbsSection];
+            const screens = [homeScreen, newWordsSection, completePhraseSection, phrasalVerbsSection, idiomsSection, completePhrasalVerbsSection, idiomsChallengeSection];
             screens.forEach(screen => {
                 if (screen.id === screenId) {
                     screen.classList.remove('hidden');
@@ -154,6 +178,11 @@
         startPhrasalVerbsCompletionBtn.addEventListener('click', () => {
             showScreen('complete-phrasal-verbs-section');
             startNewPhrasalVerbsCompletionSession();
+        });
+
+        startIdiomsChallengeBtn.addEventListener('click', () => {
+            showScreen('idioms-challenge-section');
+            startNewIdiomsChallengeSession();
         });
 
         backToHomeBtns.forEach(btn => {
@@ -789,6 +818,173 @@
         backPhrasalVerbsCompletionBtn.addEventListener('click', goBackPhrasalVerbsCompletion);
         undoPhrasalVerbsCompletionBtn.addEventListener('click', undoPhrasalVerbsCompletion);
 
+        // --- IDIOMS CHALLENGE LOGIC ---
+        function startNewIdiomsChallengeSession() {
+            sessionIdiomsChallenge = shuffleArray([...idiomsChallenge]);
+            sessionIdiomsChallengeIndex = 0;
+            idiomsChallengeScore = { correct: 0, incorrect: 0 };
+            sessionIdiomsChallengeAnswers = {};
+            updateIdiomsChallengeScoreDisplay();
+            displayCurrentIdiomsChallenge(false);
+        }
+
+        function updateIdiomsChallengeScoreDisplay() {
+            idiomsChallengeScoreCounterEl.innerHTML = `<span class="text-green-500">C: ${idiomsChallengeScore.correct}</span> &nbsp;&nbsp; <span class="text-red-500">I: ${idiomsChallengeScore.incorrect}</span>`;
+        }
+
+        function displayCurrentIdiomsChallenge(isReviewing) {
+            backIdiomChallengeBtn.disabled = sessionIdiomsChallengeIndex === 0;
+
+            if (sessionIdiomsChallengeIndex >= sessionIdiomsChallenge.length) {
+                idiomsChallengeCardContent.classList.add('hidden');
+                idiomsChallengeCompletionContainer.classList.remove('hidden');
+                idiomsChallengeCounterEl.textContent = `Completado: ${sessionIdiomsChallenge.length}/${sessionIdiomsChallenge.length}`;
+                idiomsChallengeFinalScoreTextEl.innerHTML = `Resultado: <span class="text-green-500">${idiomsChallengeScore.correct} Correctas</span>, <span class="text-red-500">${idiomsChallengeScore.incorrect} Incorrectas</span>`;
+            } else {
+                idiomsChallengeCardContent.classList.remove('hidden');
+                idiomsChallengeCompletionContainer.classList.add('hidden');
+                idiomsChallengeAnswered = false;
+                idiomsChallengeCard.style.cursor = 'default';
+                const currentIdiomData = sessionIdiomsChallenge[sessionIdiomsChallengeIndex];
+                idiomChallengeTextEl.innerHTML = currentIdiomData.sentence.replace('___', '<span class="font-bold text-yellow-500">___</span>');
+                idiomChallengeOptionsContainerEl.innerHTML = '';
+                idiomChallengeFeedbackMessageEl.textContent = '';
+                idiomChallengeExplanationContainerEl.classList.add('opacity-0');
+                idiomChallengeExplanationContainerEl.classList.remove('opacity-100');
+                optionButtons = [];
+                const options = isReviewing && currentIdiomData.shuffledOptions ? currentIdiomData.shuffledOptions : shuffleArray([...currentIdiomData.options]);
+                currentIdiomData.shuffledOptions = options; // Save the shuffled order for review
+                
+                options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.dataset.option = option;
+                    button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                    button.classList.add('option-btn', 'w-full', 'bg-white', 'dark:bg-gray-700', 'border', 'border-gray-300', 'dark:border-gray-600', 'text-gray-800', 'dark:text-gray-200', 'font-semibold', 'py-3', 'px-4', 'rounded-lg', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', 'transition-all', 'duration-200');
+                    button.addEventListener('click', handleIdiomsChallengeOptionClick);
+                    idiomChallengeOptionsContainerEl.appendChild(button);
+                    optionButtons.push(button);
+                });
+                idiomsChallengeCounterEl.textContent = `${sessionIdiomsChallengeIndex + 1} / ${sessionIdiomsChallenge.length}`;
+
+                if (isReviewing) {
+                    showPreviousIdiomsChallengeAnswer();
+                }
+            }
+        }
+
+        function showPreviousIdiomsChallengeAnswer() {
+            const previousAnswer = sessionIdiomsChallengeAnswers[sessionIdiomsChallengeIndex];
+            if (!previousAnswer) return;
+
+            const currentIdiomData = sessionIdiomsChallenge[sessionIdiomsChallengeIndex];
+            idiomsChallengeAnswered = true;
+            idiomsChallengeCard.style.cursor = 'pointer';
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.option === currentIdiomData.correct) {
+                    btn.classList.add('correct');
+                }
+                if (btn.dataset.option === previousAnswer.answer && previousAnswer.answer !== currentIdiomData.correct) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            if (previousAnswer.isCorrect) {
+                idiomChallengeFeedbackMessageEl.textContent = '¡Correcto!';
+                idiomChallengeFeedbackMessageEl.style.color = '#22c55e';
+                 if (currentIdiomData.explanation) {
+                    idiomChallengeExplanationTextEl.textContent = currentIdiomData.explanation;
+                    idiomChallengeExplanationContainerEl.classList.remove('opacity-0');
+                    idiomChallengeExplanationContainerEl.classList.add('opacity-100');
+                }
+            } else {
+                idiomChallengeFeedbackMessageEl.textContent = 'Inténtalo de nuevo';
+                idiomChallengeFeedbackMessageEl.style.color = '#ef4444';
+                idiomChallengeExplanationTextEl.textContent = currentIdiomData.explanation;
+                idiomChallengeExplanationContainerEl.classList.remove('opacity-0');
+                idiomChallengeExplanationContainerEl.classList.add('opacity-100');
+            }
+        }
+
+        function advanceIdiomsChallenge() {
+            sessionIdiomsChallengeIndex++;
+            displayCurrentIdiomsChallenge(false);
+        }
+
+        function goBackIdiomsChallenge() {
+            if (sessionIdiomsChallengeIndex > 0) {
+                sessionIdiomsChallengeIndex--;
+                displayCurrentIdiomsChallenge(true);
+            }
+        }
+
+        function undoIdiomsChallenge() {
+            if (idiomsChallengeAnswered) {
+                const currentIdiomData = sessionIdiomsChallenge[sessionIdiomsChallengeIndex];
+                const previousAnswer = sessionIdiomsChallengeAnswers[sessionIdiomsChallengeIndex];
+                if (previousAnswer && !previousAnswer.isCorrect) {
+                    idiomsChallengeScore.incorrect--;
+                }
+                delete sessionIdiomsChallengeAnswers[sessionIdiomsChallengeIndex];
+                displayCurrentIdiomsChallenge(false);
+                updateIdiomsChallengeScoreDisplay();
+            }
+        }
+
+        function handleIdiomsChallengeOptionClick(event) {
+            event.stopPropagation();
+            if (idiomsChallengeAnswered) return;
+            idiomsChallengeAnswered = true;
+            idiomsChallengeCard.style.cursor = 'pointer';
+            
+            const currentIdiomData = sessionIdiomsChallenge[sessionIdiomsChallengeIndex];
+            const selectedButton = event.currentTarget;
+            const selectedAnswer = selectedButton.dataset.option;
+            
+            const isCorrect = selectedAnswer === currentIdiomData.correct;
+            sessionIdiomsChallengeAnswers[sessionIdiomsChallengeIndex] = { answer: selectedAnswer, isCorrect: isCorrect };
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.option === currentIdiomData.correct) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            if (isCorrect) {
+                idiomChallengeFeedbackMessageEl.textContent = '¡Correcto!';
+                idiomChallengeFeedbackMessageEl.style.color = '#22c55e';
+                idiomsChallengeScore.correct++;
+            } else {
+                idiomChallengeFeedbackMessageEl.textContent = 'Inténtalo de nuevo';
+                idiomChallengeFeedbackMessageEl.style.color = '#ef4444';
+                selectedButton.classList.add('incorrect');
+                idiomsChallengeScore.incorrect++;
+            }
+
+            if (currentIdiomData.explanation) {
+                idiomChallengeExplanationTextEl.textContent = currentIdiomData.explanation;
+                idiomChallengeExplanationContainerEl.classList.remove('opacity-0');
+                idiomChallengeExplanationContainerEl.classList.add('opacity-100');
+            }
+
+            updateIdiomsChallengeScoreDisplay();
+        }
+
+        function handleIdiomsChallengeCardTransition() {
+            if (sessionIdiomsChallengeIndex >= sessionIdiomsChallenge.length) {
+                startNewIdiomsChallengeSession();
+            } else if (idiomsChallengeAnswered) {
+                advanceIdiomsChallenge();
+            }
+        }
+
+        idiomsChallengeCard.addEventListener('click', handleIdiomsChallengeCardTransition);
+        nextIdiomChallengeBtn.addEventListener('click', handleIdiomsChallengeCardTransition);
+        backIdiomChallengeBtn.addEventListener('click', goBackIdiomsChallenge);
+        undoIdiomChallengeBtn.addEventListener('click', undoIdiomsChallenge);
+
 
         // --- GLOBAL KEYDOWN LISTENER ---
         window.addEventListener('keydown', (event) => {
@@ -816,6 +1012,9 @@
                 } else if (event.key.toLowerCase() === 'e') {
                     event.preventDefault();
                     startIdiomsBtn.click();
+                } else if (event.key.toLowerCase() === 'f') {
+                    event.preventDefault();
+                    startIdiomsChallengeBtn.click();
                 }
             }
             else if (!newWordsSection.classList.contains('hidden')) {
@@ -877,6 +1076,11 @@
                     if (optionButtons[index]) {
                         optionButtons[index].click();
                     }
+                }
+            } else if (!idiomsChallengeSection.classList.contains('hidden')) {
+                if (event.key.toLowerCase() === 'f') {
+                    event.preventDefault();
+                    showScreen('home-screen');
                 }
             }
         });
