@@ -649,7 +649,151 @@ const idioms = {
     ]
 };
 
+const idiomsChallenge = [
+    {
+        "sentence": "It was raining <span class=\"font-bold text-blue-500\">cats and dogs</span> all night.",
+        "idiom": "cats and dogs",
+        "options": ["raining heavily", "raining lightly", "raining animals", "raining intermittently"],
+        "correct": "raining heavily",
+        "explanation": "The idiom 'raining cats and dogs' means it's raining very heavily."
+    },
+    {
+        "sentence": "I'm feeling a bit <span class=\"font-bold text-blue-500\">under the weather</span> today.",
+        "idiom": "under the weather",
+        "options": ["feeling sick", "feeling happy", "feeling cold", "feeling tired"],
+        "correct": "feeling sick",
+        "explanation": "The idiom 'under the weather' means feeling slightly unwell or ill."
+    },
+    {
+        "sentence": "Don't <span class=\"font-bold text-blue-500\">beat around the bush</span>, just tell me what happened.",
+        "idiom": "beat around the bush",
+        "options": ["avoid the main topic", "speak directly", "hit a bush", "talk loudly"],
+        "correct": "avoid the main topic",
+        "explanation": "To 'beat around the bush' means to avoid coming to the point."
+    },
+    {
+        "sentence": "Learning English is a <span class=\"font-bold text-blue-500\">piece of cake</span> for her.",
+        "idiom": "piece of cake",
+        "options": ["very easy", "very difficult", "a type of dessert", "a small portion"],
+        "correct": "very easy",
+        "explanation": "If something is a 'piece of cake', it is very easy to do."
+    },
+    {
+        "sentence": "Let's <span class=\"font-bold text-blue-500\">call it a day</span>, I'm exhausted.",
+        "idiom": "call it a day",
+        "options": ["stop working for the day", "make a phone call", "start a new day", "go for a walk"],
+        "correct": "stop working for the day",
+        "explanation": "To 'call it a day' means to stop working on something for the rest of the day."
+    },
+    {
+        "sentence": "He has a <span class=\"font-bold text-blue-500\">chip on his shoulder</span> about not getting promoted.",
+        "idiom": "chip on his shoulder",
+        "options": ["holding a grudge", "feeling happy", "carrying something heavy", "having a small injury"],
+        "correct": "holding a grudge",
+        "explanation": "To have a 'chip on your shoulder' means to be resentful or hold a grudge about something."
+    },
+    {
+        "sentence": "She accidentally <span class=\"font-bold text-blue-500\">spilled the beans</span> about the surprise party.",
+        "idiom": "spilled the beans",
+        "options": ["revealed a secret", "dropped some food", "cleaned up a mess", "cooked a meal"],
+        "correct": "revealed a secret",
+        "explanation": "To 'spill the beans' means to reveal a secret or disclose confidential information."
+    },
+    {
+        "sentence": "Watching horror movies is <span class=\"font-bold text-blue-500\">not my cup of tea</span>.",
+        "idiom": "not my cup of tea",
+        "options": ["not something I enjoy", "my favorite drink", "something I do often", "a type of tea"],
+        "correct": "not something I enjoy",
+        "explanation": "If something is 'not your cup of tea', it is not something you like or are interested in."
+    },
+    {
+        "sentence": "You're <span class=\"font-bold text-blue-500\">barking up the wrong tree</span> if you think I stole your pen.",
+        "idiom": "barking up the wrong tree",
+        "options": ["pursuing a mistaken course of action", "climbing a tree", "making a loud noise", "looking in the right place"],
+        "correct": "pursuing a mistaken course of action",
+        "explanation": "To be 'barking up the wrong tree' means to be pursuing a mistaken course of action or making a wrong assumption."
+    },
+    {
+        "sentence": "Don't <span class=\"font-bold text-blue-500\">cry over spilled milk</span>, it's just a small mistake.",
+        "idiom": "cry over spilled milk",
+        "options": ["regret something that cannot be undone", "be upset about a minor accident", "clean up a mess", "express sadness"],
+        "correct": "regret something that cannot be undone",
+        "explanation": "To 'cry over spilled milk' means to be upset about something that has already happened and cannot be changed."
+    },
+    {
+        "sentence": "He's got a <span class=\"font-bold text-blue-500\">bee in his bonnet</span> about healthy eating.",
+        "idiom": "bee in his bonnet",
+        "options": ["an obsession or fixation", "an insect in his hat", "a buzzing sound", "a new idea"],
+        "correct": "an obsession or fixation",
+        "explanation": "To have a 'bee in your bonnet' means to be preoccupied or obsessed with something."
+    },
+    {
+        "sentence": "Are you <span class=\"font-bold text-blue-500\">pulling my leg</span> or is that true?",
+        "idiom": "pulling my leg",
+        "options": ["joking or teasing me", "helping me walk", "hurting my leg", "telling me a secret"],
+        "correct": "joking or teasing me",
+        "explanation": "To 'pull someone's leg' means to tease or joke with them, often by telling them something untrue."
+    },
+    {
+        "sentence": "Working from home gives me <span class=\"font-bold text-blue-500\">the best of both worlds</span>.",
+        "idiom": "the best of both worlds",
+        "options": ["all the advantages", "a difficult choice", "a confusing situation", "a new experience"],
+        "correct": "all the advantages",
+        "explanation": "To have 'the best of both worlds' means to enjoy the advantages of two different things at the same time."
+    },
+    {
+        "sentence": "He had a <span class=\"font-bold text-blue-500\">frog in his throat</span> during his speech.",
+        "idiom": "frog in his throat",
+        "options": ["difficulty speaking due to hoarseness", "a pet frog", "a sore throat", "a sudden cough"],
+        "correct": "difficulty speaking due to hoarseness",
+        "explanation": "To have a 'frog in your throat' means to have a hoarse voice or difficulty speaking clearly."
+    },
+    {
+        "sentence": "She always has her <span class=\"font-bold text-blue-500\">head in the clouds</span>.",
+        "idiom": "head in the clouds",
+        "options": ["daydreaming or unrealistic", "thinking clearly", "looking at the sky", "feeling dizzy"],
+        "correct": "daydreaming or unrealistic",
+        "explanation": "To have your 'head in the clouds' means to be daydreaming, unrealistic, or impractical."
+    },
+    {
+        "sentence": "Losing that job was a <span class=\"font-bold text-blue-500\">blessing in disguise</span>.",
+        "idiom": "blessing in disguise",
+        "options": ["a good thing that seemed bad at first", "a hidden problem", "a fortunate event", "a difficult situation"],
+        "correct": "a good thing that seemed bad at first",
+        "explanation": "A 'blessing in disguise' is something that seems bad or unlucky at first but results in something good happening later."
+    },
+    {
+        "sentence": "I think he's got a <span class=\"font-bold text-blue-500\">screw loose</span>, he acts so strangely.",
+        "idiom": "screw loose",
+        "options": ["slightly crazy or eccentric", "a missing part", "a loose bolt", "a clever idea"],
+        "correct": "slightly crazy or eccentric",
+        "explanation": "To have a 'screw loose' means to be slightly crazy or eccentric."
+    },
+    {
+        "sentence": "My grandmother has a <span class=\"font-bold text-blue-500\">heart of gold</span>.",
+        "idiom": "heart of gold",
+        "options": ["very kind and generous", "a valuable possession", "a strong heart", "a selfish person"],
+        "correct": "very kind and generous",
+        "explanation": "To have a 'heart of gold' means to be very kind and generous."
+    },
+    {
+        "sentence": "Their argument was just a <span class=\"font-bold text-blue-500\">storm in a teacup</span>.",
+        "idiom": "storm in a teacup",
+        "options": ["a lot of fuss about something unimportant", "a serious problem", "a sudden weather change", "a small drink"],
+        "correct": "a lot of fuss about something unimportant",
+        "explanation": "A 'storm in a teacup' refers to a lot of anger or worry about something unimportant."
+    },
+    {
+        "sentence": "He has <span class=\"font-bold text-blue-500\">two left feet</span> when he tries to dance.",
+        "idiom": "two left feet",
+        "options": ["clumsy or awkward at dancing", "missing a foot", "wearing two left shoes", "a good dancer"],
+        "correct": "clumsy or awkward at dancing",
+        "explanation": "To have 'two left feet' means to be clumsy or awkward, especially when dancing."
+    }
+];
+
 const phrasalVerbsCompletion = [
+
     { sentence: "She needs to brush ___ on her Spanish before the trip.", options: ["up", "on", "in", "with"], correct: "up", explanation: "El phrasal verb 'brush up on' significa repasar o mejorar una habilidad que no has usado recientemente." },
     { sentence: "They decided to call ___ the wedding.", options: ["off", "out", "down", "up"], correct: "off", explanation: "El phrasal verb 'call off' significa cancelar." },
     { sentence: "He came ___ with a great idea for the campaign.", options: ["up", "on", "out", "in"], correct: "up", explanation: "El phrasal verb 'come up with' significa pensar en o sugerir una idea o plan." },
