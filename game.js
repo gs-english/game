@@ -1078,9 +1078,23 @@
                     }
                 }
             } else if (!idiomsChallengeSection.classList.contains('hidden')) {
-                if (event.key.toLowerCase() === 'f') {
+                if (idiomsChallengeAnswered) {
+                    if (event.key === 'Enter' || event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        handleIdiomsChallengeCardTransition();
+                    } else if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        goBackIdiomsChallenge();
+                    } else if (event.key.toLowerCase() === 'z') {
+                        event.preventDefault();
+                        undoIdiomsChallenge();
+                    }
+                } else if (['a', 'b', 'c', 'd'].includes(event.key.toLowerCase())) {
                     event.preventDefault();
-                    showScreen('home-screen');
+                    const index = event.key.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0);
+                    if (optionButtons[index]) {
+                        optionButtons[index].click();
+                    }
                 }
             }
         });
