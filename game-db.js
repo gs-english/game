@@ -804,5 +804,16 @@ const phrasalVerbsCompletion = [
     { sentence: "He promised to look ___ my cat while I'm away.", options: ["for", "at", "after", "up"], correct: "after", explanation: "El phrasal verb 'look after' significa cuidar de alguien o algo." },
     { sentence: "We need to get ___ to the real issue here.", options: ["over", "down", "through", "on"], correct: "down", explanation: "El phrasal verb 'get down to' significa empezar a hacer o considerar algo seriamente." },
     { sentence: "She finally got ___ her fear of flying.", options: ["over", "through", "away", "off"], correct: "over", explanation: "El phrasal verb 'get over' significa recuperarse de una enfermedad, sorpresa o miedo." },
-    { sentence: "The company is looking ___ new employees.", options: ["at", "for", "up", "on"], correct: "for", explanation: "El phrasal verb 'look for' significa buscar." }
+    { sentence: "The company is looking ___ new employees.", options: ["at", "for", "up", "on"], correct: "for", explanation: "El phrasal verb 'look for' significa buscar." },
+    { sentence: "Don't give ___! You're almost there.", options: ["in", "up", "out", "away"], correct: "up", explanation: "El phrasal verb 'give up' significa rendirse o dejar de intentar." },
+    { sentence: "The plane will take ___ in ten minutes.", options: ["on", "off", "up", "away"], correct: "off", explanation: "El phrasal verb 'take off' significa despegar (para aviones) o quitarse (ropa)." },
+    { sentence: "It's cold, you should put ___ a jacket.", options: ["in", "on", "up", "off"], correct: "on", explanation: "El phrasal verb 'put on' significa ponerse ropa." },
+    { sentence: "He turned ___ the job offer because it didn't pay enough.", options: ["up", "down", "off", "on"], correct: "down", explanation: "El phrasal verb 'turn down' significa rechazar una oferta o bajar el volumen." },
+    { sentence: "They decided to break ___ after a long relationship.", options: ["down", "up", "out", "in"], correct: "up", explanation: "El phrasal verb 'break up' significa terminar una relación." },
+    { sentence: "If you don't know the word, look it ___ in the dictionary.", options: ["for", "up", "at", "into"], correct: "up", explanation: "El phrasal verb 'look up' significa buscar información en un diccionario o libro de referencia." },
+    { sentence: "Don't bring ___ that topic again, it's too sensitive.", options: ["in", "up", "out", "on"], correct: "up", explanation: "El phrasal verb 'bring up' significa mencionar un tema o criar a un niño." },
+    { sentence: "Please go ___ with your story, I'm listening.", options: ["in", "on", "out", "up"], correct: "on", explanation: "El phrasal verb 'go on' significa continuar o seguir." },
+    { sentence: "We need to set ___ a meeting for next week.", options: ["in", "up", "out", "on"], correct: "up", explanation: "El phrasal verb 'set up' significa organizar o establecer algo." },
+    { sentence: "I hope everything works ___ for you.", options: ["in", "out", "up", "on"], correct: "out", explanation: "El phrasal verb 'work out' significa resolver un problema o tener éxito." },
+    { sentence: "I came ___ an old photo album while cleaning.", options: ["into", "across", "over", "by"], correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad." }
 ];
