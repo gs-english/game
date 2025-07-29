@@ -6,6 +6,7 @@
         const idiomsSection = document.getElementById('idioms-section');
         const completePhrasalVerbsSection = document.getElementById('complete-phrasal-verbs-section');
         const idiomsChallengeSection = document.getElementById('idioms-challenge-section');
+        const usedToSection = document.getElementById('used-to-section');
         
         const startNewWordsBtn = document.getElementById('start-new-words-btn');
         const startCompletePhraseBtn = document.getElementById('start-complete-phrase-btn');
@@ -13,6 +14,7 @@
         const startIdiomsBtn = document.getElementById('start-idioms-btn');
         const startPhrasalVerbsCompletionBtn = document.getElementById('start-phrasal-verbs-completion-btn');
         const startIdiomsChallengeBtn = document.getElementById('start-idioms-challenge-btn');
+        const startUsedToBtn = document.getElementById('start-used-to-btn');
         const backToHomeBtns = document.querySelectorAll('.back-to-home-btn');
 
         // New Words Elements
@@ -109,6 +111,22 @@
         const backIdiomChallengeBtn = document.getElementById('back-idiom-challenge-btn');
         const undoIdiomChallengeBtn = document.getElementById('undo-idiom-challenge-btn');
 
+        // Used To Elements
+        const usedToCard = document.getElementById('used-to-card');
+        const usedToCardContent = document.getElementById('used-to-card-content');
+        const usedToCompletionContainer = document.getElementById('used-to-completion-container');
+        const usedToFinalScoreTextEl = document.getElementById('used-to-final-score-text');
+        const usedToCounterEl = document.getElementById('used-to-counter');
+        const usedToScoreCounterEl = document.getElementById('used-to-score-counter');
+        const usedToTextEl = document.getElementById('used-to-text');
+        const usedToOptionsContainerEl = document.getElementById('used-to-options-container');
+        const usedToFeedbackMessageEl = document.getElementById('used-to-feedback-message');
+        const usedToExplanationContainerEl = document.getElementById('used-to-explanation-container');
+        const usedToExplanationTextEl = document.getElementById('used-to-explanation-text');
+        const nextUsedToBtn = document.getElementById('next-used-to-btn');
+        const backUsedToBtn = document.getElementById('back-used-to-btn');
+        const undoUsedToBtn = document.getElementById('undo-used-to-btn');
+
 
         // State
         let sessionWords = [];
@@ -138,9 +156,15 @@
         let idiomsChallengeScore = { correct: 0, incorrect: 0 };
         let sessionIdiomsChallengeAnswers = {};
 
+        let sessionUsedTo = [];
+        let sessionUsedToIndex = 0;
+        let usedToAnswered = false;
+        let usedToScore = { correct: 0, incorrect: 0 };
+        let sessionUsedToAnswers = {};
+
         // --- NAVIGATION LOGIC ---
         function showScreen(screenId) {
-            const screens = [homeScreen, newWordsSection, completePhraseSection, phrasalVerbsSection, idiomsSection, completePhrasalVerbsSection, idiomsChallengeSection];
+            const screens = [homeScreen, newWordsSection, completePhraseSection, phrasalVerbsSection, idiomsSection, completePhrasalVerbsSection, idiomsChallengeSection, usedToSection];
             screens.forEach(screen => {
                 if (screen.id === screenId) {
                     screen.classList.remove('hidden');
@@ -183,6 +207,11 @@
         startIdiomsChallengeBtn.addEventListener('click', () => {
             showScreen('idioms-challenge-section');
             startNewIdiomsChallengeSession();
+        });
+
+        startUsedToBtn.addEventListener('click', () => {
+            showScreen('used-to-section');
+            startNewUsedToSession();
         });
 
         backToHomeBtns.forEach(btn => {
@@ -985,6 +1014,173 @@
         backIdiomChallengeBtn.addEventListener('click', goBackIdiomsChallenge);
         undoIdiomChallengeBtn.addEventListener('click', undoIdiomsChallenge);
 
+        // --- USED TO LOGIC ---
+        function startNewUsedToSession() {
+            sessionUsedTo = shuffleArray([...usedTo]);
+            sessionUsedToIndex = 0;
+            usedToScore = { correct: 0, incorrect: 0 };
+            sessionUsedToAnswers = {};
+            updateUsedToScoreDisplay();
+            displayCurrentUsedTo(false);
+        }
+
+        function updateUsedToScoreDisplay() {
+            usedToScoreCounterEl.innerHTML = `<span class="text-green-500">C: ${usedToScore.correct}</span> &nbsp;&nbsp; <span class="text-red-500">I: ${usedToScore.incorrect}</span>`;
+        }
+
+        function displayCurrentUsedTo(isReviewing) {
+            backUsedToBtn.disabled = sessionUsedToIndex === 0;
+
+            if (sessionUsedToIndex >= sessionUsedTo.length) {
+                usedToCardContent.classList.add('hidden');
+                usedToCompletionContainer.classList.remove('hidden');
+                usedToCounterEl.textContent = `Completado: ${sessionUsedTo.length}/${sessionUsedTo.length}`;
+                usedToFinalScoreTextEl.innerHTML = `Resultado: <span class="text-green-500">${usedToScore.correct} Correctas</span>, <span class="text-red-500">${usedToScore.incorrect} Incorrectas</span>`;
+            } else {
+                usedToCardContent.classList.remove('hidden');
+                usedToCompletionContainer.classList.add('hidden');
+                usedToAnswered = false;
+                usedToCard.style.cursor = 'default';
+                const currentUsedToData = sessionUsedTo[sessionUsedToIndex];
+                usedToTextEl.innerHTML = currentUsedToData.sentence.replace('___', '<span class="font-bold text-green-500">___</span>');
+                usedToOptionsContainerEl.innerHTML = '';
+                usedToFeedbackMessageEl.textContent = '';
+                usedToExplanationContainerEl.classList.add('opacity-0');
+                usedToExplanationContainerEl.classList.remove('opacity-100');
+                optionButtons = [];
+                const options = isReviewing && currentUsedToData.shuffledOptions ? currentUsedToData.shuffledOptions : shuffleArray([...currentUsedToData.options]);
+                currentUsedToData.shuffledOptions = options; // Save the shuffled order for review
+                
+                options.forEach((option, index) => {
+                    const button = document.createElement('button');
+                    button.dataset.option = option;
+                    button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
+                    button.classList.add('option-btn', 'w-full', 'bg-white', 'dark:bg-gray-700', 'border', 'border-gray-300', 'dark:border-gray-600', 'text-gray-800', 'dark:text-gray-200', 'font-semibold', 'py-3', 'px-4', 'rounded-lg', 'hover:bg-gray-100', 'dark:hover:bg-gray-600', 'transition-all', 'duration-200');
+                    button.addEventListener('click', handleUsedToOptionClick);
+                    usedToOptionsContainerEl.appendChild(button);
+                    optionButtons.push(button);
+                });
+                usedToCounterEl.textContent = `${sessionUsedToIndex + 1} / ${sessionUsedTo.length}`;
+
+                if (isReviewing) {
+                    showPreviousUsedToAnswer();
+                }
+            }
+        }
+
+        function showPreviousUsedToAnswer() {
+            const previousAnswer = sessionUsedToAnswers[sessionUsedToIndex];
+            if (!previousAnswer) return;
+
+            const currentUsedToData = sessionUsedTo[sessionUsedToIndex];
+            usedToAnswered = true;
+            usedToCard.style.cursor = 'pointer';
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.option === currentUsedToData.correct) {
+                    btn.classList.add('correct');
+                }
+                if (btn.dataset.option === previousAnswer.answer && previousAnswer.answer !== currentUsedToData.correct) {
+                    btn.classList.add('incorrect');
+                }
+            });
+
+            if (previousAnswer.isCorrect) {
+                usedToFeedbackMessageEl.textContent = '¡Correcto!';
+                usedToFeedbackMessageEl.style.color = '#22c55e';
+                 if (currentUsedToData.explanation) {
+                    usedToExplanationTextEl.textContent = currentUsedToData.explanation;
+                    usedToExplanationContainerEl.classList.remove('opacity-0');
+                    usedToExplanationContainerEl.classList.add('opacity-100');
+                }
+            } else {
+                usedToFeedbackMessageEl.textContent = 'Inténtalo de nuevo';
+                usedToFeedbackMessageEl.style.color = '#ef4444';
+                usedToExplanationTextEl.textContent = currentUsedToData.explanation;
+                usedToExplanationContainerEl.classList.remove('opacity-0');
+                usedToExplanationContainerEl.classList.add('opacity-100');
+            }
+        }
+
+        function advanceUsedTo() {
+            sessionUsedToIndex++;
+            displayCurrentUsedTo(false);
+        }
+
+        function goBackUsedTo() {
+            if (sessionUsedToIndex > 0) {
+                sessionUsedToIndex--;
+                displayCurrentUsedTo(true);
+            }
+        }
+
+        function undoUsedTo() {
+            if (usedToAnswered) {
+                const currentUsedToData = sessionUsedTo[sessionUsedToIndex];
+                const previousAnswer = sessionUsedToAnswers[sessionUsedToIndex];
+                if (previousAnswer && !previousAnswer.isCorrect) {
+                    usedToScore.incorrect--;
+                }
+                delete sessionUsedToAnswers[sessionUsedToIndex];
+                displayCurrentUsedTo(false);
+                updateUsedToScoreDisplay();
+            }
+        }
+
+        function handleUsedToOptionClick(event) {
+            event.stopPropagation();
+            if (usedToAnswered) return;
+            usedToAnswered = true;
+            usedToCard.style.cursor = 'pointer';
+            
+            const currentUsedToData = sessionUsedTo[sessionUsedToIndex];
+            const selectedButton = event.currentTarget;
+            const selectedAnswer = selectedButton.dataset.option;
+            
+            const isCorrect = selectedAnswer === currentUsedToData.correct;
+            sessionUsedToAnswers[sessionUsedToIndex] = { answer: selectedAnswer, isCorrect: isCorrect };
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                if (btn.dataset.option === currentUsedToData.correct) {
+                    btn.classList.add('correct');
+                }
+            });
+
+            if (isCorrect) {
+                usedToFeedbackMessageEl.textContent = '¡Correcto!';
+                usedToFeedbackMessageEl.style.color = '#22c55e';
+                usedToScore.correct++;
+            } else {
+                usedToFeedbackMessageEl.textContent = 'Inténtalo de nuevo';
+                usedToFeedbackMessageEl.style.color = '#ef4444';
+                selectedButton.classList.add('incorrect');
+                usedToScore.incorrect++;
+            }
+
+            if (currentUsedToData.explanation) {
+                usedToExplanationTextEl.textContent = currentUsedToData.explanation;
+                usedToExplanationContainerEl.classList.remove('opacity-0');
+                usedToExplanationContainerEl.classList.add('opacity-100');
+            }
+
+            updateUsedToScoreDisplay();
+        }
+
+        function handleUsedToCardTransition() {
+            if (sessionUsedToIndex >= sessionUsedTo.length) {
+                startNewUsedToSession();
+            } else if (usedToAnswered) {
+                advanceUsedTo();
+            }
+        }
+
+        usedToCard.addEventListener('click', handleUsedToCardTransition);
+        nextUsedToBtn.addEventListener('click', handleUsedToCardTransition);
+        backUsedToBtn.addEventListener('click', goBackUsedTo);
+        undoUsedToBtn.addEventListener('click', undoUsedTo);
+
 
         // --- GLOBAL KEYDOWN LISTENER ---
         window.addEventListener('keydown', (event) => {
@@ -1015,6 +1211,9 @@
                 } else if (event.key.toLowerCase() === 'f') {
                     event.preventDefault();
                     startIdiomsChallengeBtn.click();
+                } else if (event.key.toLowerCase() === 'g') {
+                    event.preventDefault();
+                    startUsedToBtn.click();
                 }
             }
             else if (!newWordsSection.classList.contains('hidden')) {
@@ -1088,6 +1287,25 @@
                     } else if (event.key.toLowerCase() === 'z') {
                         event.preventDefault();
                         undoIdiomsChallenge();
+                    }
+                } else if (['a', 'b', 'c', 'd'].includes(event.key.toLowerCase())) {
+                    event.preventDefault();
+                    const index = event.key.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0);
+                    if (optionButtons[index]) {
+                        optionButtons[index].click();
+                    }
+                }
+            } else if (!usedToSection.classList.contains('hidden')) {
+                if (usedToAnswered) {
+                    if (event.key === 'Enter' || event.key === 'ArrowRight') {
+                        event.preventDefault();
+                        handleUsedToCardTransition();
+                    } else if (event.key === 'ArrowLeft') {
+                        event.preventDefault();
+                        goBackUsedTo();
+                    } else if (event.key.toLowerCase() === 'z') {
+                        event.preventDefault();
+                        undoUsedTo();
                     }
                 } else if (['a', 'b', 'c', 'd'].includes(event.key.toLowerCase())) {
                     event.preventDefault();

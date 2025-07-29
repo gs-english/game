@@ -82,6 +82,15 @@
                                 <span class="text-sm font-light block opacity-80">Guess the meaning of idioms.</span>
                             </div>
                         </button>
+                        <button id="start-used-to-btn" class="w-full bg-green-600 text-white p-8 rounded-xl shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
+                             <div class="bg-green-500 p-3 rounded-lg">
+                                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                            </div>
+                            <div class="text-center">
+                                <span class="font-bold text-lg">G. Used To</span>
+                                <span class="text-sm font-light block opacity-80">Practice past habits and states.</span>
+                            </div>
+                        </button>
                     </main>
                 </div>
 
@@ -424,6 +433,50 @@
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h12.5"></path></svg>
                             </button>
                             <button id="undo-phrase-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            </button>
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                            </button>
+                        </div>
+                    </footer>
+                </div>
+                <!-- ======================= USED TO SECTION ======================= -->
+                <div id="used-to-section" class="hidden flex-col h-full">
+                    <header class="text-center mb-4">
+                        <h1 class="text-3xl font-bold text-green-600 dark:text-green-400">Used To</h1>
+                        <div class="flex justify-center gap-4 text-sm text-gray-500 dark:text-gray-400 mt-1">
+                            <p id="used-to-counter"></p>
+                            <p id="used-to-score-counter"></p>
+                        </div>
+                    </header>
+                    <main id="used-to-card" class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8 min-h-[450px] flex flex-col justify-center flex-grow">
+                        <div id="used-to-card-content">
+                            <div class="text-center mb-6">
+                                <p class="text-lg md:text-xl font-medium text-gray-700 dark:text-gray-300" id="used-to-text"></p>
+                            </div>
+                            <div id="used-to-options-container" class="grid grid-cols-2 gap-4"></div>
+                            <div id="used-to-feedback-message" class="mt-4 text-center font-bold text-lg h-7"></div>
+                            <div id="used-to-explanation-container" class="mt-2 text-center text-sm text-gray-600 dark:text-gray-400 px-4 min-h-[3rem] flex items-center justify-center opacity-0 transition-opacity duration-300">
+                                <p id="used-to-explanation-text"></p>
+                            </div>
+                        </div>
+                         <div id="used-to-completion-container" class="hidden flex-col items-center justify-center text-center">
+                            <h2 class="text-3xl font-bold text-green-500">¡Felicidades!</h2>
+                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300">Has completado todas las frases.</p>
+                            <p id="used-to-final-score-text" class="mt-4 text-lg text-gray-800 dark:text-gray-200 font-semibold"></p>
+                            <p class="mt-4 text-sm text-gray-500">Haz clic en "Siguiente" para reiniciar.</p>
+                        </div>
+                    </main>
+                    <footer class="mt-auto pt-4">
+                        <div class="flex justify-around items-center bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg max-w-xs mx-auto">
+                             <button id="back-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Frase Anterior">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5 5-5m-4.5 5h12.5"></path></svg>
+                             </button>
+                             <button id="next-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Siguiente Frase / Reiniciar">
+                                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h12.5"></path></svg>
+                            </button>
+                            <button id="undo-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
                              <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">

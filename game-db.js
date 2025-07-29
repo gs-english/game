@@ -453,7 +453,7 @@ const phrasalVerbs = {
         { en: "Cut back on", es: "Reducir gastos en", example: "I need to cut back on my spending.", example_es: "Necesito reducir mis gastos." },
         { en: "Splash out", es: "Derrochar / Gastar mucho", example: "She splashed out on a new designer handbag.", example_es: "Derrochó en un nuevo bolso de diseñador." },
         { en: "Rip off", es: "Estafar / Timar", example: "He ripped me off, the watch is a fake.", example_es: "Me estafó, el reloj es falso." },
-        { en: "Get by", es: "Arreglárselas / Sobrevivir", example: "I need to get by on less money now that I'm a student.", example_es: "Necesito arreglármelas con menos dinero ahora que soy estudiante." },
+        { en: "Get by", es: "Arreglárselas / Sobrevivir", example: "I need to get by on less money now that I'm a student.", example_es: "Necesito arreglármelas con menos dinero ahora que soy un estudiante." },
         { en: "Put aside", es: "Ahorrar / Apartar (dinero)", example: "She's been putting aside money for her retirement.", example_es: "Ha estado apartando dinero para su jubilación." },
         { en: "Run up", es: "Acumular (deudas)", example: "He ran up a huge debt after he lost his job.", example_es: "Acumuló una enorme deuda después de perder su trabajo." },
         { en: "Bail out", es: "Rescatar (financieramente)", example: "I need to bail my brother out of jail.", example_es: "Necesito sacar a mi hermano de la cárcel (pagando fianza)." },
@@ -546,18 +546,18 @@ const idioms = {
         { en: "A chip on your shoulder", es: "Tener un complejo / Estar resentido", example: "He's got a chip on his shoulder.", example_es: "Tiene un complejo." },
         { en: "Spill the beans", es: "Contar el secreto / Irse de la lengua", example: "She spilled the beans.", example_es: "Se le fue de la lengua." },
         { en: "Not my cup of tea", es: "No es de mi agrado / No es lo mío", example: "It's not my cup of tea.", example_es: "No es lo mío." },
-        { en: "Barking up the wrong tree", es: "Estar equivocado / Ir por el camino equivocado", example: "He's barking up the wrong tree.", example_es: "Está equivocado." },
-        { en: "Cry over spilled milk", es: "Llorar sobre la leche derramada", example: "Don't cry over spilled milk.", example_es: "No llores sobre la leche derramada." },
-        { en: "A bee in your bonnet", es: "Tener una idea fija / Obsesión", example: "He's got a bee in his bonnet.", example_es: "Tiene una idea fija." },
-        { en: "Pulling your leg", es: "Tomar el pelo / Bromear", example: "She's pulling your leg.", example_es: "Te está tomando el pelo." },
-        { en: "The best of both worlds", es: "Lo mejor de dos mundos", example: "It's the best of both worlds.", example_es: "Es lo mejor de dos mundos." },
-        { en: "A frog in your throat", es: "Tener un nudo en la garganta", example: "He's got a frog in his throat.", example_es: "Tiene un nudo en la garganta." },
-        { en: "Head in the clouds", es: "Tener la cabeza en las nubes", example: "She's got her head in the clouds.", example_es: "Tiene la cabeza en las nubes." },
-        { en: "A blessing in disguise", es: "No hay mal que por bien no venga", example: "It's a blessing in disguise.", example_es: "No hay mal que por bien no venga." },
-        { en: "A screw loose", es: "Estar un poco loco / Chiflado", example: "He's got a screw loose.", example_es: "Está un poco chiflado." },
-        { en: "A heart of gold", es: "Tener un corazón de oro", example: "She's got a heart of gold.", example_es: "Tiene un corazón de oro." },
-        { en: "A storm in a teacup", es: "Una tormenta en un vaso de agua", example: "It's a storm in a teacup.", example_es: "Es una tormenta en un vaso de agua." },
-        { en: "Two left feet", es: "Ser patoso / Torpe (bailando)", example: "He's got two left feet.", example_es: "Es patoso (bailando)." }
+        { en: "Barking up the wrong tree", es: "Estar equivocado / Ir por el camino equivocado", example: "You're barking up the wrong tree if you think I stole your pen.", example_es: "Estás equivocado si crees que robé tu bolígrafo." },
+        { en: "Cry over spilled milk", es: "Llorar sobre la leche derramada", example: "Don't cry over spilled milk, it's just a small mistake.", example_es: "No llores sobre la leche derramada, es solo un pequeño error." },
+        { en: "A bee in your bonnet", es: "Tener una idea fija / Obsesión", example: "He's got a bee in his bonnet about healthy eating.", example_es: "Tiene una idea fija sobre la alimentación saludable." },
+        { en: "Pulling your leg", es: "Tomar el pelo / Bromear", example: "Are you pulling my leg or is that true?", example_es: "¿Me estás tomando el pelo o es verdad?" },
+        { en: "The best of both worlds", es: "Lo mejor de dos mundos", example: "Working from home gives me the best of both worlds.", example_es: "Trabajar desde casa me da lo mejor de dos mundos." },
+        { en: "A frog in your throat", es: "Tener un nudo en la garganta", example: "He had a frog in his throat during his speech.", example_es: "Tenía un nudo en la garganta durante su discurso." },
+        { en: "Head in the clouds", es: "Tener la cabeza en las nubes", example: "She always has her head in the clouds.", example_es: "Ella siempre tiene la cabeza en las nubes." },
+        { en: "A blessing in disguise", es: "No hay mal que por bien no venga", example: "Losing that job was a blessing in disguise.", example_es: "Perder ese trabajo fue un mal que por bien no vino." },
+        { en: "A screw loose", es: "Estar un poco loco / Chiflado", example: "I think he's got a screw loose, he acts so strangely.", example_es: "Creo que está un poco chiflado, actúa muy extraño." },
+        { en: "A heart of gold", es: "Tener un corazón de oro", example: "My grandmother has a heart of gold.", example_es: "Mi abuela tiene un corazón de oro." },
+        { en: "A storm in a teacup", es: "Una tormenta en un vaso de agua", example: "Their argument was just a storm in a teacup.", example_es: "Su discusión fue solo una tormenta en un vaso de agua." },
+        { en: "Two left feet", es: "Ser patoso / Torpe (bailando)", example: "He has two left feet when he tries to dance.", example_es: "Es patoso cuando intenta bailar." }
     ],
     "Emotions & Feelings": [
         { en: "Feeling blue", es: "Sentirse triste / Deprimido", example: "She's feeling blue today.", example_es: "Se siente triste hoy." },
@@ -816,4 +816,55 @@ const phrasalVerbsCompletion = [
     { sentence: "We need to set ___ a meeting for next week.", options: ["in", "up", "out", "on"], correct: "up", explanation: "El phrasal verb 'set up' significa organizar o establecer algo." },
     { sentence: "I hope everything works ___ for you.", options: ["in", "out", "up", "on"], correct: "out", explanation: "El phrasal verb 'work out' significa resolver un problema o tener éxito." },
     { sentence: "I came ___ an old photo album while cleaning.", options: ["into", "across", "over", "by"], correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad." }
+];
+
+const usedTo = [
+    {
+        sentence: "When I started waitressing I needed help with carrying trays, but now I _________ them by myself.",
+        options: ["used to carry", "am used to carrying", "get used to carrying"],
+        correct: "am used to carrying",
+        explanation: "The correct answer is 'am used to carrying'. This expresses a present habit or state that has become familiar."
+    },
+    {
+        sentence: "I _________ English every day, but now I don't have time.",
+        options: ["use to reading", "use to read", "used to read"],
+        correct: "used to read",
+        explanation: "The correct answer is 'used to read'. 'Used to' + base form of the verb expresses a past habit or state that no longer exists."
+    },
+    {
+        sentence: "Don't worry, it is easy to learn this grammar. You _________ it in no time!",
+        options: ["will get used to", "are used to", "used to use"],
+        correct: "will get used to",
+        explanation: "The correct answer is 'will get used to'. 'Get used to' expresses the process of becoming accustomed to something."
+    },
+    {
+        sentence: "I was surprised to see her running - she _________ when I knew her.",
+        options: ["didn't use to run", "didn't used to run", "didn't use to running"],
+        correct: "didn't use to run",
+        explanation: "The correct answer is 'didn't use to run'. The negative form of 'used to' is 'didn't use to' + base form of the verb."
+    },
+    {
+        sentence: "When I had to take the train to work I _________ very early.",
+        options: ["used to getting up", "used to get up", "use to getting up"],
+        correct: "used to get up",
+        explanation: "The correct answer is 'used to get up'. 'Used to' + base form of the verb expresses a past habit."
+    },
+    {
+        sentence: "When you were a teenager did you _________ to rap music?",
+        options: ["use to listening", "used to listen", "use to listen"],
+        correct: "use to listen",
+        explanation: "The correct answer is 'use to listen'. In questions, 'did' is used with 'use to' + base form of the verb."
+    },
+    {
+        sentence: "She didn't _________ about fashion but now she spends a lot of money on clothes.",
+        options: ["used to care", "use to care", "used to be care"],
+        correct: "use to care",
+        explanation: "The correct answer is 'use to care'. In negative sentences, 'didn't use to' + base form of the verb is used."
+    },
+    {
+        sentence: "I don't like revising for exams but I _________ it.",
+        options: ["am got used to it", "am get used to it", "am getting used to it"],
+        correct: "am getting used to it",
+        explanation: "The correct answer is 'am getting used to it'. 'Am getting used to' expresses the ongoing process of becoming accustomed to something."
+    }
 ];
