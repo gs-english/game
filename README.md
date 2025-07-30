@@ -13,3 +13,7 @@ This is a simple web-based game built with HTML, CSS, and JavaScript.
 - CSS
 - JavaScript
 - Local Storage (for game-db.js)
+
+## Responsive Design
+
+This application features a responsive user interface, with optimized layouts and content presentation for various screen sizes, including mobile devices.
