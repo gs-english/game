@@ -815,7 +815,16 @@ const phrasalVerbsCompletion = [
     { sentence: "Please go ___ with your story, I'm listening.", options: ["in", "on", "out", "up"], correct: "on", explanation: "El phrasal verb 'go on' significa continuar o seguir." },
     { sentence: "We need to set ___ a meeting for next week.", options: ["in", "up", "out", "on"], correct: "up", explanation: "El phrasal verb 'set up' significa organizar o establecer algo." },
     { sentence: "I hope everything works ___ for you.", options: ["in", "out", "up", "on"], correct: "out", explanation: "El phrasal verb 'work out' significa resolver un problema o tener éxito." },
-    { sentence: "I came ___ an old photo album while cleaning.", options: ["into", "across", "over", "by"], correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad." }
+    { sentence: "I came ___ an old photo album while cleaning.", options: ["into", "across", "over", "by"], correct: "across", explanation: "El phrasal verb 'come across' significa encontrar algo o a alguien por casualidad." },
+    { sentence: "She needs to fill ___ this form before she leaves.", options: ["in", "out", "up", "on"], correct: "in", explanation: "El phrasal verb 'fill in' o 'fill out' significa rellenar un formulario." },
+    { sentence: "He needs to cut ___ on sugar if he wants to lose weight.", options: ["down", "off", "out", "up"], correct: "down", explanation: "El phrasal verb 'cut down on' significa reducir el consumo de algo." },
+    { sentence: "They decided to eat ___ tonight instead of cooking.", options: ["in", "out", "up", "on"], correct: "out", explanation: "El phrasal verb 'eat out' significa comer fuera de casa." },
+    { sentence: "I need to pick ___ my sister from the airport.", options: ["up", "on", "out", "in"], correct: "up", explanation: "El phrasal verb 'pick up' significa recoger a alguien." },
+    { sentence: "He needs to get ___ of bed, it's already noon.", options: ["up", "on", "out", "in"], correct: "up", explanation: "El phrasal verb 'get up' significa levantarse." },
+    { sentence: "She needs to put ___ her clothes after washing them.", options: ["away", "on", "up", "off"], correct: "away", explanation: "El phrasal verb 'put away' significa guardar algo en su lugar." },
+    { sentence: "He needs to throw ___ his old shoes.", options: ["away", "out", "up", "on"], correct: "away", explanation: "El phrasal verb 'throw away' o 'throw out' significa desechar algo." },
+    { sentence: "I need to tidy ___ my room before my parents arrive.", options: ["up", "on", "out", "in"], correct: "up", explanation: "El phrasal verb 'tidy up' significa ordenar o arreglar." },
+    { sentence: "She needs to switch ___ the lights when she leaves the room.", options: ["off", "on", "up", "down"], correct: "off", explanation: "El phrasal verb 'switch off' significa apagar un aparato eléctrico." }
 ];
 
 const usedTo = [
@@ -866,5 +875,77 @@ const usedTo = [
         options: ["am got used to it", "am get used to it", "am getting used to it"],
         correct: "am getting used to it",
         explanation: "The correct answer is 'am getting used to it'. 'Am getting used to' expresses the ongoing process of becoming accustomed to something."
+    },
+    {
+        sentence: "He _________ live in a small village, but now he lives in a big city.",
+        options: ["used to", "is used to", "get used to"],
+        correct: "used to",
+        explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists."
+    },
+    {
+        sentence: "It took me a while, but I _________ waking up early for work.",
+        options: ["used to", "am used to", "got used to"],
+        correct: "got used to",
+        explanation: "The correct answer is 'got used to'. 'Get used to' expresses the process of becoming accustomed to something."
+    },
+    {
+        sentence: "My grandmother _________ tell me stories every night.",
+        options: ["used to", "is used to", "get used to"],
+        correct: "used to",
+        explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit."
+    },
+    {
+        sentence: "I _________ coffee in the morning, so I feel strange without it.",
+        options: ["used to drinking", "am used to drinking", "get used to drinking"],
+        correct: "am used to drinking",
+        explanation: "The correct answer is 'am used to drinking'. 'Be used to' + -ing form expresses a present habit or state that has become familiar."
+    },
+    {
+        sentence: "Did you _________ play outside a lot when you were a child?",
+        options: ["used to", "use to", "get used to"],
+        correct: "use to",
+        explanation: "The correct answer is 'use to'. In questions, 'did' is used with 'use to' + base form of the verb."
+    },
+    {
+        sentence: "She _________ eating spicy food, so she doesn't mind the chili.",
+        options: ["used to", "is used to", "get used to"],
+        correct: "is used to",
+        explanation: "The correct answer is 'is used to'. 'Be used to' + -ing form expresses a present habit or state that has become familiar."
+    },
+    {
+        sentence: "It's hard to _________ living in a new country.",
+        options: ["used to", "be used to", "get used to"],
+        correct: "get used to",
+        explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something."
+    },
+    {
+        sentence: "They _________ have a dog, but it died last year.",
+        options: ["used to", "are used to", "get used to"],
+        correct: "used to",
+        explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past state that no longer exists."
+    },
+    {
+        sentence: "I _________ the noise from the street now; it doesn't bother me anymore.",
+        options: ["used to", "am used to", "get used to"],
+        correct: "am used to",
+        explanation: "The correct answer is 'am used to'. 'Be used to' + noun/gerund expresses a present habit or state that has become familiar."
+    },
+    {
+        sentence: "He _________ smoke, but he quit five years ago.",
+        options: ["used to", "is used to", "get used to"],
+        correct: "used to",
+        explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit that no longer exists."
+    },
+    {
+        sentence: "You'll _________ the cold weather after a few weeks.",
+        options: ["used to", "be used to", "get used to"],
+        correct: "get used to",
+        explanation: "The correct answer is 'get used to'. 'Get used to' expresses the process of becoming accustomed to something."
+    },
+    {
+        sentence: "We _________ go to that restaurant every Friday.",
+        options: ["used to", "are used to", "get used to"],
+        correct: "used to",
+        explanation: "The correct answer is 'used to'. 'Used to' + base form of the verb expresses a past habit."
     }
 ];
