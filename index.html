@@ -11,6 +11,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="game.css">
+    <link rel="stylesheet" href="mobile.css">
 </head>
 <body class="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
 
@@ -24,7 +25,7 @@
                             <svg class="w-12 h-12 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                             <h1 class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 font-baloo">Learning English Funny</h1>
                         </div>
-                        <p class="text-md text-gray-500 dark:text-gray-400 mt-2">Your Fun English Journey Starts Here!</p>
+                        <p id="tagline" class="text-md text-gray-500 dark:text-gray-400 mt-2">Your Fun English Journey Starts Here!</p>
                         <p class="text-xl text-gray-700 dark:text-gray-300 mt-8 font-semibold">What Would You Like to Practice Today?</p>
                     </header>
                     <main class="grid grid-cols-3 gap-4">
@@ -34,7 +35,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">A. Words</span>
-                                <span class="text-sm font-light block opacity-80">Expand your vocabulary.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Expand your vocabulary.</span>
                             </div>
                         </button>
                         <button id="start-complete-phrase-btn" class="w-full bg-teal-600 text-white p-8 rounded-xl shadow-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -43,7 +44,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">B. Complete</span>
-                                <span class="text-sm font-light block opacity-80">Practice grammar and expressions.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Practice grammar and expressions.</span>
                             </div>
                         </button>
                         <button id="start-phrasal-verbs-btn" class="w-full bg-purple-600 text-white p-8 rounded-xl shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -52,7 +53,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">C. Phrasal Verbs</span>
-                                <span class="text-sm font-light block opacity-80">Master verb combinations.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Master verb combinations.</span>
                             </div>
                         </button>
                         <button id="start-phrasal-verbs-completion-btn" class="w-full bg-rose-600 text-white p-8 rounded-xl shadow-lg hover:bg-rose-700 focus:outline-none focus:ring-2 focus:ring-rose-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -61,7 +62,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">D. Complete Phrasal Verbs</span>
-                                <span class="text-sm font-light block opacity-80">Test your phrasal verb knowledge.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Test your phrasal verb knowledge.</span>
                             </div>
                         </button>
                         <button id="start-idioms-btn" class="w-full bg-orange-600 text-white p-8 rounded-xl shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -70,7 +71,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">E. Idioms</span>
-                                <span class="text-sm font-light block opacity-80">Understand common expressions.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Understand common expressions.</span>
                             </div>
                         </button>
                         <button id="start-idioms-challenge-btn" class="w-full bg-yellow-600 text-white p-8 rounded-xl shadow-lg hover:bg-yellow-700 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -79,7 +80,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">F. Idioms Challenge</span>
-                                <span class="text-sm font-light block opacity-80">Guess the meaning of idioms.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Guess the meaning of idioms.</span>
                             </div>
                         </button>
                         <button id="start-used-to-btn" class="w-full bg-green-600 text-white p-8 rounded-xl shadow-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2">
@@ -88,7 +89,7 @@
                             </div>
                             <div class="text-center">
                                 <span class="font-bold text-lg">G. Used To</span>
-                                <span class="text-sm font-light block opacity-80">Practice past habits and states.</span>
+                                <span class="text-sm font-light block opacity-80 mobile-hidden">Practice past habits and states.</span>
                             </div>
                         </button>
                     </main>
