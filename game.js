@@ -17,6 +17,67 @@
         const startUsedToBtn = document.getElementById('start-used-to-btn');
         const backToHomeBtns = document.querySelectorAll('.back-to-home-btn');
 
+        // Get elements for dynamic text
+        const appTitle = document.getElementById('app-title');
+        const appFunnyTitle = document.getElementById('app-funny-title');
+        const appTagline = document.getElementById('app-tagline');
+        const appPracticePrompt = document.getElementById('app-practice-prompt');
+        const wordsBtnPrefix = document.getElementById('words-btn-prefix');
+        const wordsBtnShort = document.getElementById('words-btn-short');
+        const wordsBtnLong = document.getElementById('words-btn-long');
+        const completeBtnPrefix = document.getElementById('complete-btn-prefix');
+        const completeBtnShort = document.getElementById('complete-btn-short');
+        const completeBtnLong = document.getElementById('complete-btn-long');
+        const phrasalVerbsBtnPrefix = document.querySelector('#start-phrasal-verbs-btn .lg\\:inline');
+        const phrasalVerbsBtnShort = document.querySelector('#start-phrasal-verbs-btn .font-semibold.text-base:not(.lg\\:inline)');
+        const phrasalVerbsBtnLong = document.querySelector('#start-phrasal-verbs-btn .text-xs');
+        const verbCompletionBtnPrefix = document.querySelector('#start-phrasal-verbs-completion-btn .lg\\:inline');
+        const verbCompletionBtnShort = document.querySelector('#start-phrasal-verbs-completion-btn .font-semibold.text-base.hidden.md\\:block');
+        const verbCompletionBtnLong = document.querySelector('#start-phrasal-verbs-completion-btn .text-xs');
+        const idiomsBtnPrefix = document.querySelector('#start-idioms-btn .lg\\:inline');
+        const idiomsBtnShort = document.querySelector('#start-idioms-btn .font-semibold.text-base:not(.lg\\:inline)');
+        const idiomsBtnLong = document.querySelector('#start-idioms-btn .text-xs');
+        const idiomsChallengeBtnPrefix = document.querySelector('#start-idioms-challenge-btn .lg\\:inline');
+        const idiomsChallengeBtnShort = document.querySelector('#start-idioms-challenge-btn .font-semibold.text-base:not(.lg\\:inline)');
+        const idiomsChallengeBtnLong = document.querySelector('#start-idioms-challenge-btn .text-xs');
+        const usedToBtnPrefix = document.querySelector('#start-used-to-btn .lg\\:inline');
+        const usedToBtnShort = document.querySelector('#start-used-to-btn .font-semibold.text-base:not(.lg\\:inline)');
+        const usedToBtnLong = document.querySelector('#start-used-to-btn .text-xs');
+
+        // Set initial text content from MESSAGES
+        appTitle.textContent = MESSAGES.app.title;
+        appFunnyTitle.textContent = MESSAGES.app.funnyTitle;
+        appTagline.textContent = MESSAGES.app.tagline;
+        appPracticePrompt.textContent = MESSAGES.app.practicePrompt;
+
+        wordsBtnPrefix.textContent = "A. ";
+        wordsBtnShort.textContent = MESSAGES.buttons.words.short;
+        wordsBtnLong.textContent = MESSAGES.buttons.words.long;
+
+        completeBtnPrefix.textContent = "B. ";
+        completeBtnShort.textContent = MESSAGES.buttons.complete.short;
+        completeBtnLong.textContent = MESSAGES.buttons.complete.long;
+
+        phrasalVerbsBtnPrefix.textContent = "C. ";
+        phrasalVerbsBtnShort.textContent = MESSAGES.buttons.phrasalVerbs.short;
+        phrasalVerbsBtnLong.textContent = MESSAGES.buttons.phrasalVerbs.long;
+
+        verbCompletionBtnPrefix.textContent = "D. ";
+        verbCompletionBtnShort.textContent = MESSAGES.buttons.verbCompletion.short;
+        verbCompletionBtnLong.textContent = MESSAGES.buttons.verbCompletion.long;
+
+        idiomsBtnPrefix.textContent = "E. ";
+        idiomsBtnShort.textContent = MESSAGES.buttons.idioms.short;
+        idiomsBtnLong.textContent = MESSAGES.buttons.idioms.long;
+
+        idiomsChallengeBtnPrefix.textContent = "F. ";
+        idiomsChallengeBtnShort.textContent = MESSAGES.buttons.idiomsChallenge.short;
+        idiomsChallengeBtnLong.textContent = MESSAGES.buttons.idiomsChallenge.long;
+
+        usedToBtnPrefix.textContent = "G. ";
+        usedToBtnShort.textContent = MESSAGES.buttons.usedTo.short;
+        usedToBtnLong.textContent = MESSAGES.buttons.usedTo.long;
+
         // New Words Elements
         const wordCard = document.getElementById('word-card');
         const wordCardContent = document.getElementById('word-card-content');
