@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aprende Inglés Interactivo</title>
+    <title id="app-title"></title>
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -25,10 +25,10 @@
                     <header class="text-center mb-10">
                         <div class="flex justify-center items-center gap-3">
                             <svg class="w-12 h-12 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
-                            <h1 class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 font-baloo">Learning English Funny</h1>
+                            <h1 id="app-funny-title" class="text-4xl md:text-5xl font-bold text-blue-600 dark:text-blue-400 font-baloo"></h1>
                         </div>
-                        <p class="hidden md:block text-md text-gray-500 dark:text-gray-400 mt-2">Your Fun English Journey Starts Here!</p>
-                        <p class="text-xl text-gray-700 dark:text-gray-300 mt-8 font-semibold hidden md:block">What Would You Like to Practice Today?</p>
+                        <p id="app-tagline" class="hidden md:block text-md text-gray-500 dark:text-gray-400 mt-2"></p>
+                        <p id="app-practice-prompt" class="text-xl text-gray-700 dark:text-gray-300 mt-8 font-semibold hidden md:block"></p>
                     </header>
                     <main class="grid grid-cols-3 gap-4">
                         <button id="start-new-words-btn" class="w-full bg-blue-600 text-white p-2 md:p-8 rounded-xl shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2 aspect-square">
@@ -36,8 +36,8 @@
                                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
                             </div>
                             <div class="text-center h-10">
-                                <span class="font-semibold text-base hidden lg:inline">A. </span><span class="font-semibold text-base">Words</span>
-                                <span class="text-xs font-normal hidden md:block opacity-80">Expand your vocabulary.</span>
+                                <span class="font-semibold text-base hidden lg:inline" id="words-btn-prefix"></span><span class="font-semibold text-base" id="words-btn-short"></span>
+                                <span class="text-xs font-normal hidden md:block opacity-80" id="words-btn-long"></span>
                             </div>
                         </button>
                         <button id="start-complete-phrase-btn" class="w-full bg-teal-600 text-white p-2 md:p-8 rounded-xl shadow-lg hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-teal-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2 aspect-square">
@@ -45,8 +45,8 @@
                                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
                             </div>
                             <div class="text-center h-10">
-                                <span class="font-semibold text-base hidden lg:inline">B. </span><span class="font-semibold text-base">Complete</span>
-                                <span class="text-xs font-normal hidden md:block opacity-80">Practice grammar and expressions.</span>
+                                <span class="font-semibold text-base hidden lg:inline" id="complete-btn-prefix"></span><span class="font-semibold text-base" id="complete-btn-short"></span>
+                                <span class="text-xs font-normal hidden md:block opacity-80" id="complete-btn-long"></span>
                             </div>
                         </button>
                         <button id="start-phrasal-verbs-btn" class="w-full bg-purple-600 text-white p-2 md:p-8 rounded-xl shadow-lg hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-opacity-50 transition-all duration-200 active:scale-95 flex flex-col items-center justify-center text-center gap-2 aspect-square">
