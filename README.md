@@ -17,3 +17,7 @@ This is a simple web-based game built with HTML, CSS, and JavaScript.
 ## Responsive Design
 
 This application features a responsive user interface, with optimized layouts and content presentation for various screen sizes, including mobile devices.
+
+## Internalization
+
+This game is being updated to support multiple languages. Text strings are now externalized as parameters, allowing for easy translation and localization.
