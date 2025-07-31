@@ -1,6 +1,6 @@
 const MESSAGES = {
     app: {
-        title: "Aprende Inglés Interactivo",
+        title: "Interactive English Learning",
         funnyTitle: "Learning English Funny",
         tagline: "Your Fun English Journey Starts Here!",
         practicePrompt: "What Would You Like to Practice Today?",
@@ -43,76 +43,76 @@ const MESSAGES = {
             title: "G. Used To"
         },
         reveal: {
-            title: "Mostrar Traducción"
+            title: "Show Translation"
         },
         newWord: {
-            title: "Nueva Palabra / Reiniciar"
+            title: "New Word / Restart"
         },
         newPhrasalVerb: {
-            title: "Nuevo Phrasal Verb / Reiniciar"
+            title: "New Phrasal Verb / Restart"
         },
         newIdiom: {
-            title: "Nuevo Idiom / Reiniciar"
+            title: "New Idiom / Restart"
         },
         nextPhrase: {
-            title: "Siguiente Frase / Reiniciar"
+            title: "Next Phrase / Restart"
         },
         backPhrase: {
-            title: "Frase Anterior"
+            title: "Previous Phrase"
         },
         undo: {
-            title: "Deshacer"
+            title: "Undo"
         },
         backToHome: {
-            title: "Volver al Inicio"
+            title: "Back to Home"
         }
     },
     wordsSection: {
         title: "Words",
         categoryLabel: "Category:",
         allCategories: "All Categories",
-        englishWordPrompt: "La palabra en inglés es:",
-        exampleSentencePrompt: "Frase de ejemplo:",
-        meaningPrompt: "Significado:",
-        exampleTranslationPrompt: "Traducción del ejemplo:",
-        completionTitle: "¡Felicidades!",
-        completionMessage: "Has completado esta categoría.",
-        completionRestart: "Haz clic en \"Nueva Palabra\" para reiniciar."
+        englishWordPrompt: "The English word is:",
+        exampleSentencePrompt: "Example sentence:",
+        meaningPrompt: "Meaning:",
+        exampleTranslationPrompt: "Example translation:",
+        completionTitle: "Congratulations!",
+        completionMessage: "You have completed this category.",
+        completionRestart: "Click \"New Word\" to restart."
     },
     phrasalVerbsSection: {
         title: "Phrasal Verbs",
         categoryLabel: "Category:",
         allCategories: "All Categories",
-        phrasalVerbPrompt: "El phrasal verb es:",
-        exampleSentencePrompt: "Frase de ejemplo:",
-        meaningPrompt: "Significado:",
-        exampleTranslationPrompt: "Traducción del ejemplo:",
-        completionTitle: "¡Felicidades!",
-        completionMessage: "Has completado esta categoría.",
-        completionRestart: "Haz clic en \"Nuevo Phrasal Verb\" para reiniciar."
+        phrasalVerbPrompt: "The phrasal verb is:",
+        exampleSentencePrompt: "Example sentence:",
+        meaningPrompt: "Meaning:",
+        exampleTranslationPrompt: "Example translation:",
+        completionTitle: "Congratulations!",
+        completionMessage: "You have completed this category.",
+        completionRestart: "Click \"New Phrasal Verb\" to restart."
     },
     idiomsSection: {
         title: "Idioms",
         categoryLabel: "Category:",
         allCategories: "All Categories",
-        idiomPrompt: "El idiom es:",
-        exampleSentencePrompt: "Frase de ejemplo:",
-        meaningPrompt: "Significado:",
-        exampleTranslationPrompt: "Traducción del ejemplo:",
-        completionTitle: "¡Felicidades!",
-        completionMessage: "Has completado esta categoría.",
-        completionRestart: "Haz clic en \"Nuevo Idiom\" para reiniciar."
+        idiomPrompt: "The idiom is:",
+        exampleSentencePrompt: "Example sentence:",
+        meaningPrompt: "Meaning:",
+        exampleTranslationPrompt: "Example translation:",
+        completionTitle: "Congratulations!",
+        completionMessage: "You have completed this category.",
+        completionRestart: "Click \"New Idiom\" to restart."
     },
     challengeSection: {
-        completionTitle: "¡Felicidades!",
-        completionMessage: "Has completado todas las frases.",
-        completionRestart: "Haz clic en \"Siguiente\" para reiniciar.",
-        scorePrefix: "Resultado:",
-        correct: "Correctas",
-        incorrect: "Incorrectas",
-        correctFeedback: "¡Correcto!",
-        incorrectFeedback: "Inténtalo de nuevo",
-        counterPrefix: "Completado: ",
+        completionTitle: "Congratulations!",
+        completionMessage: "You have completed all phrases.",
+        completionRestart: "Click \"Next\" to restart.",
+        scorePrefix: "Score:",
+        correct: "Correct",
+        incorrect: "Incorrect",
+        correctFeedback: "Correct!",
+        incorrectFeedback: "Try again",
+        counterPrefix: "Completed: ",
         scoreCounterCorrect: "C:",
         scoreCounterIncorrect: "I:"
     },

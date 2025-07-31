@@ -12,7 +12,8 @@ This is a simple web-based game built with HTML, CSS, and JavaScript.
 - HTML
 - CSS
 - JavaScript
-- Local Storage (for game-db.js)
+- `game-db.js`: Manages game data persistence using Local Storage.
+- `interface.js`: Handles user interface interactions and dynamic content updates.
 
 ## Responsive Design
 
