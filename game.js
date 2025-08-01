@@ -368,6 +368,7 @@
         function startNewPhraseSession() {
             sessionPhrases = shuffleArray([...phrases]);
             sessionPhraseIndex = 0;
+            console.log("Loaded phrases:", sessionPhrases);
             phraseScore = { correct: 0, incorrect: 0 };
             sessionAnswers = {};
             updatePhraseScoreDisplay();
