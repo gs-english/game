@@ -116,7 +116,7 @@
                     <main id="word-card" class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8 min-h-[450px] flex flex-col justify-center flex-grow">
                         <div id="word-card-content">
                             <div class="text-center">
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">La palabra en inglés es:</p>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400" id="words-english-word-prompt"></p>
                                 <h2 id="english-word" class="text-4xl sm:text-5xl font-bold my-2 text-gray-900 dark:text-white"></h2>
                                 <p id="ipa-pronunciation" class="text-base sm:text-lg text-gray-500 dark:text-gray-400"></p>
                                 <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">Frase de ejemplo:</p>
@@ -132,9 +132,9 @@
                             </div>
                         </div>
                          <div id="word-completion-container" class="hidden flex-col items-center justify-center text-center">
-                            <h2 class="text-3xl font-bold text-green-500">¡Felicidades!</h2>
-                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300">Has completado esta categoría.</p>
-                            <p class="mt-4 text-sm text-gray-500">Haz clic en "Nueva Palabra" para reiniciar.</p>
+                            <h2 class="text-3xl font-bold text-green-500" id="words-completion-title"></h2>
+                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300" id="words-completion-message"></p>
+                            <p class="mt-4 text-sm text-gray-500" id="words-completion-restart"></p>
                         </div>
                     </main>
                     <footer class="mt-auto pt-4">
@@ -148,7 +148,7 @@
                             <button id="undo-word-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                            <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                            <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>
@@ -173,7 +173,7 @@
                     <main id="phrasal-verb-card" class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8 min-h-[450px] flex flex-col justify-center flex-grow">
                         <div id="phrasal-verb-card-content">
                             <div class="text-center">
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">El phrasal verb es:</p>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400" id="phrasal-verbs-english-word-prompt"></p>
                                 <h2 id="phrasal-verb-english" class="text-4xl sm:text-5xl font-bold my-2 text-gray-900 dark:text-white"></h2>
                                 <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">Frase de ejemplo:</p>
                                 <p id="phrasal-verb-example-sentence" class="text-md italic text-gray-700 dark:text-gray-300"></p>
@@ -188,9 +188,9 @@
                             </div>
                         </div>
                         <div id="phrasal-verb-completion-container" class="hidden flex-col items-center justify-center text-center">
-                            <h2 class="text-3xl font-bold text-green-500">¡Felicidades!</h2>
-                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300">Has completado esta categoría.</p>
-                            <p class="mt-4 text-sm text-gray-500">Haz clic en "Nuevo Phrasal Verb" para reiniciar.</p>
+                            <h2 class="text-3xl font-bold text-green-500" id="phrasal-verbs-completion-title"></h2>
+                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300" id="phrasal-verbs-completion-message"></p>
+                            <p class="mt-4 text-sm text-gray-500" id="phrasal-verbs-completion-restart"></p>
                         </div>
                     </main>
                     <footer class="mt-auto pt-4">
@@ -229,7 +229,7 @@
                     <main id="idiom-card" class="bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 md:p-8 min-h-[450px] flex flex-col justify-center flex-grow">
                         <div id="idiom-card-content">
                             <div class="text-center">
-                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400">El idiom es:</p>
+                                <p class="text-sm font-medium text-gray-500 dark:text-gray-400" id="idioms-english-word-prompt"></p>
                                 <h2 id="idiom-english" class="text-4xl sm:text-5xl font-bold my-2 text-gray-900 dark:text-white"></h2>
                                 <p class="text-sm font-medium text-gray-500 dark:text-gray-400 mt-4">Frase de ejemplo:</p>
                                 <p id="idiom-example-sentence" class="text-md italic text-gray-700 dark:text-gray-300"></p>
@@ -243,10 +243,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="idiom-completion-container" class="hidden flex-col items-center justify-center text-center">
-                            <h2 class="text-3xl font-bold text-green-500">¡Felicidades!</h2>
-                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300">Has completado esta categoría.</p>
-                            <p class="mt-4 text-sm text-gray-500">Haz clic en "Nuevo Idiom" para reiniciar.</p>
+                        <div id="word-completion-container" class="hidden flex-col items-center justify-center text-center">
+                            <h2 class="text-3xl font-bold text-green-500" id="words-completion-title"></h2>
+                            <p class="mt-2 text-lg text-gray-700 dark:text-gray-300" id="words-completion-message"></p>
+                            <p class="mt-4 text-sm text-gray-500" id="words-completion-restart"></p>
                         </div>
                     </main>
                     <footer class="mt-auto pt-4">
@@ -305,7 +305,7 @@
                             <button id="undo-idiom-challenge-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>
@@ -350,7 +350,7 @@
                             <button id="undo-idiom-challenge-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>
@@ -393,7 +393,7 @@
                             <button id="undo-phrasal-verbs-completion-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>
@@ -438,7 +438,7 @@
                             <button id="undo-phrase-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>
@@ -473,16 +473,16 @@
                     </main>
                     <footer class="mt-auto pt-4">
                         <div class="flex justify-around items-center bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg max-w-xs mx-auto">
-                             <button id="back-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Frase Anterior">
+                             <button id="back-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title=""></button>
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5 5-5m-4.5 5h12.5"></path></svg>
                              </button>
-                             <button id="next-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Siguiente Frase / Reiniciar">
+                             <button id="next-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.nextPhrase.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5-5 5M5 12h12.5"></path></svg>
                             </button>
-                            <button id="undo-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Deshacer">
+                            <button id="undo-used-to-btn" class="p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.undo.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 15l-3-3m0 0l3-3m-3 3h8m-7 0a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </button>
-                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="Volver al Inicio">
+                             <button class="back-to-home-btn p-3 text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 rounded-full" title="${MESSAGES.buttons.backToHome.spanishTitle}">
                                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
                             </button>
                         </div>

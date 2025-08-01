@@ -43,28 +43,36 @@ const MESSAGES = {
             title: "G. Used To"
         },
         reveal: {
-            title: "Show Translation"
+            title: "Show Translation",
+            spanishTitle: "Mostrar Traducción"
         },
         newWord: {
-            title: "New Word / Restart"
+            title: "New Word / Restart",
+            spanishTitle: "Nueva Palabra / Reiniciar"
         },
         newPhrasalVerb: {
-            title: "New Phrasal Verb / Restart"
+            title: "New Phrasal Verb / Restart",
+            spanishTitle: "Nuevo Phrasal Verb / Reiniciar"
         },
         newIdiom: {
-            title: "New Idiom / Restart"
+            title: "New Idiom / Restart",
+            spanishTitle: "Nuevo Idiom / Reiniciar"
         },
         nextPhrase: {
-            title: "Next Phrase / Restart"
+            title: "Next Phrase / Restart",
+            spanishTitle: "Siguiente Frase / Reiniciar"
         },
         backPhrase: {
-            title: "Previous Phrase"
+            title: "Previous Phrase",
+            spanishTitle: "Frase Anterior"
         },
         undo: {
-            title: "Undo"
+            title: "Undo",
+            spanishTitle: "Deshacer"
         },
         backToHome: {
-            title: "Back to Home"
+            title: "Back to Home",
+            spanishTitle: "Volver al Inicio"
         }
     },
     wordsSection: {
@@ -72,41 +80,62 @@ const MESSAGES = {
         categoryLabel: "Category:",
         allCategories: "All Categories",
         englishWordPrompt: "The English word is:",
+        spanishWordPrompt: "La palabra en inglés es:",
         exampleSentencePrompt: "Example sentence:",
         meaningPrompt: "Meaning:",
+        spanishMeaningPrompt: "Significado:",
         exampleTranslationPrompt: "Example translation:",
+        spanishExampleTranslationPrompt: "Traducción del ejemplo:",
         completionTitle: "Congratulations!",
+        spanishCompletionTitle: "¡Felicidades!",
         completionMessage: "You have completed this category.",
-        completionRestart: "Click \"New Word\" to restart."
+        spanishCompletionMessage: "Has completado esta categoría.",
+        completionRestart: "Click \"New Word\" to restart.",
+        spanishCompletionRestart: "Haz clic en \"Nueva Palabra\" para reiniciar."
     },
     phrasalVerbsSection: {
         title: "Phrasal Verbs",
         categoryLabel: "Category:",
         allCategories: "All Categories",
         phrasalVerbPrompt: "The phrasal verb is:",
+        spanishPhrasalVerbPrompt: "El phrasal verb es:",
         exampleSentencePrompt: "Example sentence:",
         meaningPrompt: "Meaning:",
+        spanishMeaningPrompt: "Significado:",
         exampleTranslationPrompt: "Example translation:",
+        spanishExampleTranslationPrompt: "Traducción del ejemplo:",
         completionTitle: "Congratulations!",
+        spanishCompletionTitle: "¡Felicidades!",
         completionMessage: "You have completed this category.",
-        completionRestart: "Click \"New Phrasal Verb\" to restart."
+        spanishCompletionMessage: "Has completado esta categoría.",
+        completionRestart: "Click \"New Phrasal Verb\" to restart.",
+        spanishCompletionRestart: "Haz clic en \"Nuevo Phrasal Verb\" para reiniciar."
     },
     idiomsSection: {
         title: "Idioms",
         categoryLabel: "Category:",
         allCategories: "All Categories",
         idiomPrompt: "The idiom is:",
+        spanishIdiomPrompt: "El idiom es:",
         exampleSentencePrompt: "Example sentence:",
         meaningPrompt: "Meaning:",
+        spanishMeaningPrompt: "Significado:",
         exampleTranslationPrompt: "Example translation:",
+        spanishExampleTranslationPrompt: "Traducción del ejemplo:",
         completionTitle: "Congratulations!",
+        spanishCompletionTitle: "¡Felicidades!",
         completionMessage: "You have completed this category.",
-        completionRestart: "Click \"New Idiom\" to restart."
+        spanishCompletionMessage: "Has completado esta categoría.",
+        completionRestart: "Click \"New Idiom\" to restart.",
+        spanishCompletionRestart: "Haz clic en \"Nuevo Idiom\" para reiniciar."
     },
     challengeSection: {
         completionTitle: "Congratulations!",
+        spanishCompletionTitle: "¡Felicidades!",
         completionMessage: "You have completed all phrases.",
+        spanishAllPhrasesCompletionMessage: "Has completado todas las frases.",
         completionRestart: "Click \"Next\" to restart.",
+        spanishCompletionRestart: "Haz clic en \"Siguiente\" para reiniciar.",
         scorePrefix: "Score:",
         correct: "Correct",
         incorrect: "Incorrect",
