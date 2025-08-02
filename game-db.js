@@ -567,15 +567,6 @@ const idioms = {
         { en: "A heavy heart", es: "Con el corazón encogido / Triste", example: "She's got a heavy heart.", example_es: "Tiene el corazón encogido." },
         { en: "A bone to pick with someone", es: "Tener algo que reprochar a alguien", example: "He's got a bone to pick with you.", example_es: "Tiene algo que reprocharte." },
         { en: "A lump in your throat", es: "Tener un nudo en la garganta (emocional)", example: "She's got a lump in her throat.", example_es: "Tiene un nudo en la garganta." },
-        { en: "A chip on your shoulder", es: "Tener un complejo / Estar resentido", example: "He's got a chip on his shoulder.", example_es: "Tiene un complejo." },
-        { en: "A bee in your bonnet", es: "Tener una idea fija / Obsesión", example: "She's got a bee in her bonnet.", example_es: "Tiene una idea fija." },
-        { en: "A frog in your throat", es: "Tener un nudo en la garganta (al hablar)", example: "He's got a frog in his throat.", example_es: "Tiene un nudo en la garganta." },
-        { en: "Head in the clouds", es: "Tener la cabeza en las nubes", example: "She's got her head in the clouds.", example_es: "Tiene la cabeza en las nubes." },
-        { en: "A blessing in disguise", es: "No hay mal que por bien no venga", example: "It's a blessing in disguise.", example_es: "No hay mal que por bien no venga." },
-        { en: "A screw loose", es: "Estar un poco loco / Chiflado", example: "He's got a screw loose.", example_es: "Está un poco chiflado." },
-        { en: "A heart of gold", es: "Tener un corazón de oro", example: "She's got a heart of gold.", example_es: "Tiene un corazón de oro." },
-        { en: "A storm in a teacup", es: "Una tormenta en un vaso de agua", example: "It's a storm in a teacup.", example_es: "Es una tormenta en un vaso de agua." },
-        { en: "Two left feet", es: "Ser patoso / Torpe (bailando)", example: "He's got two left feet.", example_es: "Es patoso (bailando)." },
         { en: "A green thumb", es: "Tener mano para las plantas", example: "She's got a green thumb.", example_es: "Tiene mano para las plantas." },
         { en: "A sweet tooth", es: "Ser goloso", example: "He's got a sweet tooth.", example_es: "Es goloso." },
         { en: "A sharp tongue", es: "Tener la lengua afilada", example: "She's got a sharp tongue.", example_es: "Tiene la lengua afilada." },
@@ -596,12 +587,7 @@ const idioms = {
         { en: "Have your foot in the door", es: "Poner un pie en (una empresa/oportunidad)", example: "He's got his foot in the door.", example_es: "Ha puesto un pie en la empresa." },
         { en: "Have your hands full", es: "Estar muy ocupado", example: "She's got her hands full with work.", example_es: "Está muy ocupada con el trabajo." },
         { en: "Have your back against the wall", es: "Estar contra la espada y la pared", example: "He's got his back against the wall.", example_es: "Está contra la espada y la pared." },
-        { en: "Have your work cut out for you", es: "Tener mucho trabajo por delante", example: "She's got her work cut out for her.", example_es: "Tiene mucho trabajo por delante." },
-        { en: "Have your ducks in a row", es: "Tener todo en orden", example: "He's got his ducks in a row.", example_es: "Tiene todo en orden." },
-        { en: "Keep your eye on the ball", es: "Estar atento / No perder de vista el objetivo", example: "She's got her eye on the ball.", example_es: "Está atenta." },
-        { en: "Have your foot in the door", es: "Poner un pie en (una empresa/oportunidad)", example: "He's got his foot in the door.", example_es: "Ha puesto un pie en la empresa." },
-        { en: "Have your hands full", es: "Estar muy ocupado", example: "She's got her hands full with work.", example_es: "Está muy ocupada con el trabajo." },
-        { en: "Have your back against the wall", es: "Estar contra la espada y la pared", example: "He's got his back against the wall.", example_es: "Está contra la espada y la pared." }
+        
     ],
     "Time": [
         { en: "Once in a blue moon", es: "Muy de vez en cuando / Rara vez", example: "Once in a blue moon.", example_es: "Muy de vez en cuando." },
@@ -645,7 +631,7 @@ const idioms = {
         { en: "To be a night owl", es: "Ser un ave nocturna", example: "To be a night owl.", example_es: "Ser un ave nocturna." },
         { en: "To be a morning lark", es: "Ser una persona madrugadora", example: "To be a morning lark.", example_es: "Ser una persona madrugadora." },
         { en: "To be a social butterfly", es: "Ser una mariposa social", example: "To be a social butterfly.", example_es: "Ser una mariposa social." },
-        { en: "To be a lone wolf", es: "Ser un lobo solitario", example: "To be a lone wolf.", example_es: "Ser un lobo solitario." }
+        
     ]
 };
 
