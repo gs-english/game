@@ -1281,6 +1281,9 @@
                 } else if (event.key.toLowerCase() === 'g') {
                     event.preventDefault();
                     startUsedToBtn.click();
+                } else if (event.key.toLowerCase() === 'h') {
+                    event.preventDefault();
+                    startBeVsGoBtn.click();
                 }
             }
             else if (!newWordsSection.classList.contains('hidden')) {
