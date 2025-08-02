@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Aprendizaje: Be vs. Go</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .feedback-correct {
+            color: #15803d; /* green-700 */
+            background-color: #dcfce7; /* green-100 */
+            border-left: 4px solid #22c55e; /* green-500 */
+        }
+        .feedback-incorrect {
+            color: #b91c1c; /* red-700 */
+            background-color: #fee2e2; /* red-100 */
+            border-left: 4px solid #ef4444; /* red-500 */
+        }
+        .main-menu-button {
+            transition: all 0.3s ease;
+        }
+        .main-menu-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Ocultar elementos por defecto */
+        #quiz-view, #final-score-view {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 antialiased">
+
+    <div class="container mx-auto p-4 sm:p-6 md:p-8 max-w-2xl bg-white rounded-xl shadow-lg">
+
+        <!-- Vista del Menú Principal -->
+        <div id="main-menu-view">
+            <header class="text-center mb-10">
+                <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-900 tracking-tight">Domina "Be" vs. "Go"</h1>
+                <p class="mt-4 text-lg text-gray-600">Elige tu nivel de dificultad y pon a prueba tus conocimientos.</p>
+            </header>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Botón Básico -->
+                <div onclick="startQuiz('basic')" class="main-menu-button cursor-pointer bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-center">
+                    <h2 class="text-2xl font-bold text-indigo-600">Básico</h2>
+                    <p class="mt-2 text-gray-500">Ideal para reforzar los conceptos fundamentales que viste en el video.</p>
+                </div>
+                <!-- Botón Avanzado -->
+                <div onclick="startQuiz('advanced')" class="main-menu-button cursor-pointer bg-white p-8 rounded-xl shadow-lg border border-gray-200 text-center">
+                    <h2 class="text-2xl font-bold text-red-600">Avanzado</h2>
+                    <p class="mt-2 text-gray-500">Preguntas de mayor dificultad con más contexto y diferentes tiempos verbales.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Vista del Cuestionario -->
+        <div id="quiz-view">
+            <header class="flex justify-between items-center mb-6">
+                <div>
+                    <h2 id="quiz-title" class="text-2xl font-bold text-gray-800">Cuestionario</h2>
+                    <p id="question-counter" class="text-gray-500"></p>
+                </div>
+                <div class="text-right">
+                     <p class="text-lg font-bold text-indigo-600">Puntos: <span id="score">0</span></p>
+                </div>
+            </header>
+            <div id="question-container" class="bg-white p-6 rounded-lg shadow-md">
+                <!-- La pregunta actual se insertará aquí -->
+            </div>
+            <div id="feedback-container" class="mt-4 p-4 rounded-md text-sm font-medium hidden"></div>
+            <div class="mt-6 text-center">
+                <button id="next-button" class="hidden bg-indigo-600 text-white font-bold py-2 px-6 rounded-lg hover:bg-indigo-700 transition-colors">Siguiente</button>
+            </div>
+        </div>
+
+        <!-- Vista de Puntuación Final -->
+        <div id="final-score-view" class="text-center">
+             <h2 class="text-3xl font-bold text-gray-900">¡Cuestionario Completado!</h2>
+             <p id="final-score-text" class="text-xl mt-4 text-gray-600"></p>
+             <p id="final-message" class="text-lg mt-2 text-gray-500"></p>
+             <button onclick="goToMenu()" class="mt-8 bg-indigo-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-indigo-700 transition-colors">Volver al Menú</button>
+        </div>
+
+    </div>
+
+    <script>
+        // --- DATOS DEL CUESTIONARIO ---
+        const basicQuizData = [
+            { question: "1. Where is Sam? He has ___ to Canada.", options: ["been", "gone"], answer: "gone", explanation: "Correcto. Usamos 'has gone' porque Sam fue a Canadá y todavía está allí." },
+            { question: "2. Have you ever ___ to Canada?", options: ["been", "gone"], answer: "been", explanation: "Correcto. Usamos 'have you ever been to...?' para preguntar sobre experiencias de vida." },
+            { question: "3. My parents have ___ to the supermarket. They'll be back in an hour.", options: ["been", "gone"], answer: "gone", explanation: "Correcto. 'Have gone' indica que fueron y aún no han regresado." },
+            { question: "4. I have never ___ to an opera.", options: ["been", "gone"], answer: "been", explanation: "Correcto. 'Have never been to' se usa para hablar de una experiencia que nunca has tenido." },
+            { question: "5. I can't find my keys. Where have they ___?", options: ["been", "gone"], answer: "gone", explanation: "Correcto. Las llaves 'se han ido' a algún lugar y no están aquí ahora." },
+            { question: "6. I'm so tired. I have ___ to the bank, the library, and the post office.", options: ["been", "gone"], answer: "been", explanation: "Correcto. Usamos 'have been' porque la persona ya regresó de todos esos lugares." },
+            { question: "7. Have you ever ___ camping?", options: ["been", "gone"], answer: "gone", explanation: "Correcto. Con actividades, 'gone' es muy común para preguntar si alguna vez has realizado esa actividad." },
+            { question: "8. I'm not here right now. I have ___ to lunch.", options: ["been", "gone"], answer: "gone", explanation: "Correcto. 'Have gone to lunch' significa que la persona salió a almorzar y no está disponible." }
+        ];
+
+        const advancedQuizData = [
+            { question: "1. I called you last night, but you didn't answer. Where were you? / Oh, I ___ to the cinema.", options: ["was", "went"], answer: "went", explanation: "Correcto. Se usa 'went' (pasado de 'go') para describir la acción de ir a un lugar." },
+            { question: "2. The party was great! I was surprised that even John ___ there.", options: ["was", "went"], answer: "was", explanation: "Correcto. Se usa 'was' (pasado de 'be') para describir la presencia de alguien en un lugar." },
+            { question: "3. My brother is a pilot. He ___ to many different countries for his job.", options: ["is", "goes"], answer: "goes", explanation: "Correcto. Se usa 'goes' (presente simple de 'go') para hablar de acciones habituales o repetidas." },
+            { question: "4. A: Is Maria in the office today? / B: No, she has ___ to a conference in another city.", options: ["been", "gone"], answer: "gone", explanation: "Correcto. El contexto ('Is Maria here?') nos dice que ella no ha regresado, por lo tanto, 'has gone'." },
+            { question: "5. A: This restaurant is amazing! / B: I know! I've ___ here many times before.", options: ["been", "gone"], answer: "been", explanation: "Correcto. El contexto ('many times before') indica una experiencia repetida. La persona ha venido y se ha ido varias veces." },
+            { question: "6. Last summer, we ___ swimming at the lake almost every day.", options: ["were", "went"], answer: "went", explanation: "Correcto. Se usa 'went' con actividades como 'swimming', 'hiking', 'shopping', etc." },
+            { question: "7. The office is empty. It seems everyone has ___ home for the day.", options: ["been", "gone"], answer: "gone", explanation: "Correcto. La oficina está vacía porque todos se han ido y no han regresado." },
+            { question: "8. He told me he had never ___ so scared in his entire life.", options: ["been", "gone"], answer: "been", explanation: "Correcto. 'Been' se usa para describir estados o sentimientos. 'He had never been scared' (Él nunca había estado asustado)." }
+        ];
+
+        const quizzes = {
+            basic: basicQuizData,
+            advanced: advancedQuizData
+        };
+
+        // --- ESTADO DE LA APLICACIÓN ---
+        let currentQuizData = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+
+        // --- ELEMENTOS DEL DOM ---
+        const mainMenu = document.getElementById('main-menu-view');
+        const quizView = document.getElementById('quiz-view');
+        const finalScoreView = document.getElementById('final-score-view');
+        const questionContainer = document.getElementById('question-container');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const nextButton = document.getElementById('next-button');
+        
+        // --- FUNCIONES ---
+        function startQuiz(level) {
+            currentQuizData = quizzes[level];
+            currentQuestionIndex = 0;
+            score = 0;
+            
+            mainMenu.style.display = 'none';
+            finalScoreView.style.display = 'none';
+            quizView.style.display = 'block';
+
+            document.getElementById('quiz-title').innerText = `Cuestionario ${level === 'basic' ? 'Básico' : 'Avanzado'}`;
+            document.getElementById('score').innerText = score;
+
+            showQuestion();
+        }
+
+        function showQuestion() {
+            feedbackContainer.classList.add('hidden');
+            nextButton.classList.add('hidden');
+
+            const question = currentQuizData[currentQuestionIndex];
+            document.getElementById('question-counter').innerText = `Pregunta ${currentQuestionIndex + 1} de ${currentQuizData.length}`;
+            
+            let optionsHTML = question.options.map(option => `
+                <button class="w-full text-left p-3 bg-gray-100 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors" onclick="checkAnswer('${option}')">
+                    ${option}
+                </button>
+            `).join('');
+
+            questionContainer.innerHTML = `
+                <p class="text-lg font-medium mb-4">${question.question}</p>
+                <div class="space-y-3">${optionsHTML}</div>
+            `;
+        }
+
+        function checkAnswer(selectedOption) {
+            const question = currentQuizData[currentQuestionIndex];
+            const optionButtons = questionContainer.querySelectorAll('button');
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                btn.classList.remove('hover:bg-indigo-100');
+                if (btn.innerText === question.answer) {
+                    btn.classList.add('bg-green-200', 'text-green-800', 'font-bold');
+                }
+            });
+
+            if (selectedOption === question.answer) {
+                score++;
+                document.getElementById('score').innerText = score;
+                feedbackContainer.innerHTML = `<span class="font-bold">¡Correcto!</span> ${question.explanation}`;
+                feedbackContainer.className = 'mt-4 p-4 rounded-md text-sm font-medium feedback-correct';
+            } else {
+                feedbackContainer.innerHTML = `<span class="font-bold">Incorrecto.</span> ${question.explanation}`;
+                feedbackContainer.className = 'mt-4 p-4 rounded-md text-sm font-medium feedback-incorrect';
+                optionButtons.forEach(btn => {
+                    if (btn.innerText === selectedOption) {
+                        btn.classList.add('bg-red-200', 'text-red-800');
+                    }
+                });
+            }
+
+            feedbackContainer.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+
+            if (currentQuestionIndex === currentQuizData.length - 1) {
+                nextButton.innerText = 'Ver Resultados';
+                nextButton.onclick = showFinalScore;
+            } else {
+                nextButton.innerText = 'Siguiente';
+                nextButton.onclick = nextQuestion;
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showQuestion();
+        }
+
+        function showFinalScore() {
+            quizView.style.display = 'none';
+            finalScoreView.style.display = 'block';
+            
+            const finalScoreText = document.getElementById('final-score-text');
+            const finalMessage = document.getElementById('final-message');
+            finalScoreText.innerText = `Tu puntuación final es: ${score} de ${currentQuizData.length}`;
+
+            let message = '';
+            const percentage = (score / currentQuizData.length) * 100;
+            if (percentage === 100) {
+                message = '¡Excelente trabajo! Has dominado el tema.';
+            } else if (percentage >= 75) {
+                message = '¡Muy bien! Tienes un gran entendimiento del tema.';
+            } else if (percentage >= 50) {
+                message = '¡Buen intento! Sigue practicando un poco más.';
+            } else {
+                message = 'No te preocupes. ¡Repasa el video y vuelve a intentarlo!';
+            }
+            finalMessage.innerText = message;
+        }
+
+        function goToMenu() {
+            finalScoreView.style.display = 'none';
+            mainMenu.style.display = 'block';
+        }
+
+    </script>
+    <footer class="fixed bottom-0 left-0 w-full bg-white dark:bg-gray-800 shadow-lg">
+        <div class="flex justify-around items-center max-w-2xl mx-auto p-2 rounded-full">
+            <a href="../index.html" class="p-3 text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 rounded-full" title="Home">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </a>
+        </div>
+    </footer>
+
+</body>
+</html>

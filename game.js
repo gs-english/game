@@ -15,6 +15,7 @@
         const startPhrasalVerbsCompletionBtn = document.getElementById('start-phrasal-verbs-completion-btn');
         const startIdiomsChallengeBtn = document.getElementById('start-idioms-challenge-btn');
         const startUsedToBtn = document.getElementById('start-used-to-btn');
+        const startBeVsGoBtn = document.getElementById('start-be-vs-go-btn');
         const backToHomeBtns = document.querySelectorAll('.back-to-home-btn');
 
         // Get elements for dynamic text
@@ -273,6 +274,10 @@
         startUsedToBtn.addEventListener('click', () => {
             showScreen('used-to-section');
             startNewUsedToSession();
+        });
+
+        startBeVsGoBtn.addEventListener('click', () => {
+            window.location.href = 'submodulos/compare.html';
         });
 
         backToHomeBtns.forEach(btn => {
