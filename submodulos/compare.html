@@ -123,6 +123,7 @@
         let currentQuizData = [];
         let currentQuestionIndex = 0;
         let score = 0;
+        let sessionAnswers = {};
 
         // --- ELEMENTOS DEL DOM ---
         const mainMenu = document.getElementById('main-menu-view');
@@ -132,12 +133,14 @@
         const feedbackContainer = document.getElementById('feedback-container');
         const nextButton = document.getElementById('next-button');
         const pageHeader = document.getElementById('page-header');
+        let optionButtons = [];
         
         // --- FUNCIONES ---
         function startQuiz(level) {
             currentQuizData = quizzes[level];
             currentQuestionIndex = 0;
             score = 0;
+            sessionAnswers = {};
             
             mainMenu.style.display = 'none';
             finalScoreView.style.display = 'none';
@@ -157,9 +160,9 @@
             const question = currentQuizData[currentQuestionIndex];
             document.getElementById('question-counter').innerText = `Pregunta ${currentQuestionIndex + 1} de ${currentQuizData.length}`;
             
-            let optionsHTML = question.options.map(option => `
-                <button class="w-full text-left p-3 bg-gray-100 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors" onclick="checkAnswer('${option}')">
-                    ${option}
+            let optionsHTML = question.options.map((option, index) => `
+                <button class="w-full text-left p-3 bg-gray-100 rounded-lg hover:bg-indigo-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-colors" onclick="checkAnswer(this)" data-option-index="${index}" data-value="${option}">
+                    ${String.fromCharCode(65 + index)}. ${option}
                 </button>
             `).join('');
 
@@ -167,21 +170,40 @@
                 <p class="text-lg font-medium mb-4">${question.question}</p>
                 <div class="space-y-3">${optionsHTML}</div>
             `;
+            optionButtons = questionContainer.querySelectorAll('button');
+
+            if (isReviewing) {
+                showPreviousAnswer();
+            }
         }
 
-        function checkAnswer(selectedOption) {
+        function checkAnswer(selectedButton) {
             const question = currentQuizData[currentQuestionIndex];
-            const optionButtons = questionContainer.querySelectorAll('button');
+            const selectedOption = selectedButton.dataset.value;
+            
+            console.log("--- checkAnswer --- ");
+            console.log("Question Answer:", question.answer);
+            console.log("Selected Option:", selectedOption);
+
+            const isCorrect = selectedOption === question.answer;
+            sessionAnswers[currentQuestionIndex] = { answer: selectedOption, isCorrect: isCorrect };
 
             optionButtons.forEach(btn => {
                 btn.disabled = true;
                 btn.classList.remove('hover:bg-indigo-100');
-                if (btn.innerText === question.answer) {
+
+                console.log("  Button data-value:", btn.dataset.value);
+                console.log("  Is correct answer button?", btn.dataset.value === question.answer);
+                console.log("  Is selected incorrect button?", btn.dataset.value === selectedOption && !isCorrect);
+
+                if (btn.dataset.value === question.answer) {
                     btn.classList.add('bg-green-200', 'text-green-800', 'font-bold');
+                } else if (btn.dataset.value === selectedOption && !isCorrect) {
+                    btn.classList.add('bg-red-200', 'text-red-800');
                 }
             });
 
-            if (selectedOption === question.answer) {
+            if (isCorrect) {
                 score++;
                 document.getElementById('score').innerText = score;
                 feedbackContainer.innerHTML = `<span class="font-bold">¡Correcto!</span> ${question.explanation}`;
@@ -189,11 +211,6 @@
             } else {
                 feedbackContainer.innerHTML = `<span class="font-bold">Incorrecto.</span> ${question.explanation}`;
                 feedbackContainer.className = 'mt-4 p-4 rounded-md text-sm font-medium feedback-incorrect';
-                optionButtons.forEach(btn => {
-                    if (btn.innerText === selectedOption) {
-                        btn.classList.add('bg-red-200', 'text-red-800');
-                    }
-                });
             }
 
             feedbackContainer.classList.remove('hidden');
@@ -210,7 +227,73 @@
 
         function nextQuestion() {
             currentQuestionIndex++;
-            showQuestion();
+            showQuestion(false);
+        }
+
+        function showPreviousAnswer() {
+            const previousAnswer = sessionAnswers[currentQuestionIndex];
+            if (!previousAnswer) return;
+
+            const question = currentQuizData[currentQuestionIndex];
+
+            console.log("--- showPreviousAnswer --- ");
+            console.log("Question Answer:", question.answer);
+            console.log("Previous Answer:", previousAnswer.answer);
+            console.log("Previous Answer isCorrect:", previousAnswer.isCorrect);
+
+            optionButtons.forEach(btn => {
+                btn.disabled = true;
+                console.log("  Button data-value:", btn.dataset.value);
+                console.log("  Is correct answer button?", btn.dataset.value === question.answer);
+                console.log("  Is previous incorrect button?", btn.dataset.value === previousAnswer.answer && !previousAnswer.isCorrect);
+
+                if (btn.dataset.value === question.answer) {
+                    btn.classList.add('bg-green-200', 'text-green-800', 'font-bold');
+                } else if (btn.dataset.value === previousAnswer.answer && !previousAnswer.isCorrect) {
+                    btn.classList.add('bg-red-200', 'text-red-800');
+                }
+            });
+
+            if (previousAnswer.isCorrect) {
+                feedbackContainer.innerHTML = `<span class="font-bold">¡Correcto!</span> ${question.explanation}`;
+                feedbackContainer.className = 'mt-4 p-4 rounded-md text-sm font-medium feedback-correct';
+            } else {
+                feedbackContainer.innerHTML = `<span class="font-bold">Incorrecto.</span> ${question.explanation}`;
+                feedbackContainer.className = 'mt-4 p-4 rounded-md text-sm font-medium feedback-incorrect';
+            }
+            feedbackContainer.classList.remove('hidden');
+            nextButton.classList.remove('hidden');
+
+            if (currentQuestionIndex === currentQuizData.length - 1) {
+                nextButton.innerText = 'Ver Resultados';
+                nextButton.onclick = showFinalScore;
+            } else {
+                nextButton.innerText = 'Siguiente';
+                nextButton.onclick = nextQuestion;
+            }
+        }
+
+        function goBackQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(true);
+            }
+        }
+
+        function undoQuestion() {
+            const previousAnswer = sessionAnswers[currentQuestionIndex];
+            if (previousAnswer) {
+                if (previousAnswer && !previousAnswer.isCorrect) {
+                    score--;
+                }
+                delete sessionAnswers[currentQuestionIndex];
+                showQuestion(false);
+            }
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            showQuestion(false);
         }
 
         function showFinalScore() {
@@ -264,6 +347,23 @@
                     startQuiz('basic');
                 } else if (event.key.toLowerCase() === 'b') {
                     startQuiz('advanced');
+                }
+            } else if (quizView.style.display === 'block') {
+                const questionAnswered = sessionAnswers[currentQuestionIndex] !== undefined;
+
+                if (event.key === 'Enter') {
+                    if (questionAnswered) {
+                        nextButton.click(); // Simulate click on next button
+                    }
+                } else if (event.key === 'ArrowLeft') {
+                    goBackQuestion();
+                } else if (event.key.toLowerCase() === 'z') {
+                    undoQuestion();
+                } else if (!questionAnswered && ['a', 'b', 'c', 'd'].includes(event.key.toLowerCase())) {
+                    const index = event.key.toLowerCase().charCodeAt(0) - 'a'.charCodeAt(0);
+                    if (optionButtons[index]) {
+                        checkAnswer(optionButtons[index]);
+                    }
                 }
             }
         });
