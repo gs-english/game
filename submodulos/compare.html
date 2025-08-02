@@ -237,13 +237,26 @@
 
         function goToMenu() {
             finalScoreView.style.display = 'none';
+            quizView.style.display = 'none'; // Added this line
             mainMenu.style.display = 'block';
             pageHeader.style.display = 'block';
         }
 
+        function handleHomeButtonClick() {
+            if (quizView.style.display === 'block') {
+                goToMenu(); // Go back to the main menu of compare.html
+            } else {
+                window.location.href = '../index.html'; // Go to index.html
+            }
+        }
+
         window.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
-                document.getElementById('home-btn').click();
+                if (quizView.style.display === 'block') {
+                    goToMenu(); // Go back to the main menu of compare.html
+                } else {
+                    window.location.href = '../index.html'; // Go to index.html
+                }
             }
 
             if (!mainMenu.style.display || mainMenu.style.display === 'block') {
@@ -258,7 +271,7 @@
     </script>
     <footer class="w-full max-w-2xl mx-auto mt-4">
         <div class="flex justify-around items-center bg-white dark:bg-gray-800 p-2 rounded-full shadow-lg">
-            <a id="home-btn" href="../index.html" class="p-3 text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 rounded-full" title="Home">
+            <a id="home-btn" href="#" onclick="handleHomeButtonClick()" class="p-3 text-gray-700 dark:text-gray-300 hover:text-teal-600 dark:hover:text-teal-400 rounded-full" title="Home">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
             </a>
         </div>
